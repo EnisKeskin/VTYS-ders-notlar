@@ -29,7 +29,7 @@
 | İhtiyaç duyduğu donanı açısından da çok ucuzdur                                                                | Kodlar kapalı olduğu için güvenilirdir.                                                |
 | Çok kapsamlı testlerden geçmemiş olması her an bir güvenlik açığı oluşma ihtimali vardır.                      | Kodları kapalı olduğu için geliştirmeye izin verilmiyor.                               |
 | Henüz tüm ihtiyaçlara tam olarak cevap verememesi bir çok kullanıcının bu tarz sistemlere güvenini azaltmıştır | Ücretlidir                                                                             |
-| Teçrübeli olmayanlar için kullanımı zordur                                                                     | Sitem çalışırken arka planda kullanıcıdan gizli işlemler gerçekleştirebilir.           |
+| Tecrübeli olmayanlar için kullanımı zordur                                                                     | Sitem çalışırken arka planda kullanıcıdan gizli işlemler gerçekleştirebilir.           |
 
 # İlişkisel Veri Tabanı Yönetim Sistemleri
 
