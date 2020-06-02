@@ -1076,3 +1076,147 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 - NoSQL veritabanları ilişkisel veri tabanlarına göre çok daha esnektir.
 - Çeşitli açılardan iki veritabanı yaklaşımı göz önüne alındığında ikisinin de fark yarattığı ve ön plana çıktığı noktalar olduğu görülmektedir. Ancak bazı açılardan ilişkisel bir veritabanının kullanılmasının çok daha doğru olduğu görülmektedir.
 - İnternet ortamında hızla artan veri yoğunluğu düşünüldüğünde geleceğin teknolojisi ilişkisel veri tabanları yerine NoSQL veri tabanı teknolojisi olabileceği düşünülmektedir.
+
+# MongoDB
+
+- MongoDB NoSql veri tabanı sistemlerinin Doküman tabanlı sistemlerinden biridir.
+- Veriler JSON\BSON formatında saklanır.
+
+# Peki JSON ve BSON nedir ?
+
+- **JSON** verilerin XML benzeri formatta ama daha da sıkıştırılmış ve boyutu daha küçültülmüş halde tutulmasıdır.
+- Böylelikle boyutun küçülmesinin yanında işlem hızı da daha iyi seviyede olmaktadır.
+- **BSON** ise JSON verilerin encode edilmiş halidir yani bir kademe daha sıkıştırılmış hali olarak da düşünülebilir.
+- MongoDB ye dönecek olursak MongoDB de veriler belirli ID’ler tanımlanarak tutulmaktadır ve bu sayede sorgulamalarda yüksek performans göstermektedir.
+- Diğer NoSql sistemlere oranla daha zengin bir sorgulama diline sahiptir.
+- MongoDB’de veriler Document’lar halinde Collection’lar içerisinde bulunur.
+- Veriyapısı açısından İVTYS’lerle karşılaştırıldığında collection tabloya, bir Document ise tablodaki bir satıra denk gelir diyebiliriz.
+- Veriler yatay ölçeklendirme ile yedeklenebildiği için kullanılabilirlik oranı oldukça yüksektir.
+- MongoDB ölçeklenebilirliği sağlamak için **Master-Slave Replication** desteği sunuyor.
+- Bu modelde yazma işlemleri master sunucuya yapılırken okuma işlemleri slave sunuculardan yapılarak ölçeklendirme sağlanıyor.
+- MongoDB üzerindeki verileri işlemek için **MapReduce** desteği de sunuyor.
+- Bu sayede büyük miktardaki veriyi kolay bir şekilde işlemek mümkün hale geliyor.
+- MongoDB’nin en güzel özelliklerinden birisi de **Sharding**.
+- Bu özellik sayesinde büyük miktardaki veri, sunucular arasında paylaştırılıp yükün dağıtılması sağlanabiliyor
+- Replication özelliği ile birlikte kullanıldığında MongoDB NoSQL’in gücünü ortaya koyuyor.
+- **Sorgu(query) Desteği**: Pekçok NoSQL çözümü veriye sadece anahtarlar(key) üzerinden erişme olanağı sağlarken, MongoDB istenilen alanlar ve belirli aralıklara(range query) göre, ayrıca düzenli ifadelerle(regular expression) de sorgulama imkanı sunuyor.
+- **İkincil(secondary) index Desteği**: İstenilen alanlara göre sorgulama yanı sıra, bu alanları secondary index olarak tanımlayabilmek. Bu SQL de kullanılan non-clustered index olarak da düşünülebilir.
+
+# MongoDB Altyapısı
+
+- **Aggregation**
+  - Dağınık halde bulunan verileri toplayıp gruplandırmak ve bunlar üzerinden gerekli işlemleri yapmak.
+- **Map-Reduce Desteği**
+  - Böl gönder, topla gönder
+  - Burada kullanıcının sisteme yüklediği veriler mapperlar ile parçalara bölünür ve gerekli alanlara dağıtılır
+  - Bu sayede işlemler daha hızlı yapılır ve sistemin her alanına aktarılan yük daha da azaltılmış olur
+  - Sistem tarafından gerekli işlemler yapıldıktan sonra bu veriler Reducer’lar ile tekrar bir araya getirilir ve kullanıcıya aktarılır.
+- **Data Models**
+  - MongoDB’nin veri tutma biçimi SQLden farklı bir halde bulunmaktadır.
+  - Bir dizi içerisinde string ve integer ifade bulunabilir. Bu özellikte İVTYS’lerden fark olarak düşünebileceğimiz bir özellik.
+- **Replication**
+  - MongoDB’nin herhangi bir server hatası durumunda kendini güvenceye alması.
+  - VTYS sistemlerdeki Disaster Recovery’ler benzeri olarak da düşünülebilir.
+  - Ana sunucunun her hangi bir sorunla karşılaşması tehlikesine karşın yedek sunucular ile verilerin yedeklenmesi ve ana sunucuda sorun gerçekleştiğinde yedek sunucunun ana sunucu görevini üstlenip veri kayıplarını engellemesi için gerekli bir özelliktir.
+- **Master-Slave Replication Desteği**
+  - Yazma ve okuma işlemlerini ayrı sunuculara yönlendirebilme.
+  - Replication özelliğinin bir alt özelliği olarak da düşünülebilir.
+  - Yine aynı şekilde ana sunucu ve yedek sunucular oluşturulabilir.
+  - Burada ek olarak yazma ve okuma işlemleri ayrı sunuculardan yapılabilir.
+  - Sunucular üzerindeki trafik ve yük azaltılacağından performans açısından önemli bir artış daha sağlanabilir.
+- **Sharding Desteği**
+  - Büyük ölçekli verilerin sunucular arasında paylaştırılması özelliği.
+  - Bazen veriler çok büyük boyutlara ulaştığında tek bir sunucu artık bizim için yetersiz bir hal alabilir
+  - Yeni sunucular ile yatay büyümeye giderek veriler bu sunuculara dağıtılır ve yük azaltılmış olur.
+
+# MONGODB HANGİ DURUMLARDA KULLANILMALI?
+
+- Yüksek okuma / yazma gerektiren yerlerde,
+- Karmaşık sorgu ve analiz ihtiyacı varsa,
+- Kullanıcı I/O, haber, duyuru verilerinde,
+- Log verilerinde,
+- Ürün, katalog verileri saklanmasında,
+- Resim, video saklanmasında. (GridFS)
+
+| SQL                                                                 | MongoDB                                                                       |
+| ------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Database                                                            | Database                                                                      |
+| Table                                                               | Collection                                                                    |
+| Row                                                                 | document or BSON document                                                     |
+| Column                                                              | Field                                                                         |
+| Index                                                               | Index                                                                         |
+| Table joins                                                         | embeded documents and linking                                                 |
+| Primary key Spesify and unique or column combination as primary key | Primary key In MongoDB the primary key is automatically set to the \_id field |
+| Aggregation (e.g group by)                                          | Aggregation framework                                                         |
+
+# MongoDB Özellikleri
+
+- Doküman Tabanlı veritabanı
+  - JSON türevi (BSON) bir ofrmat kullanır
+- Şemasız
+- Performans
+  - C++ da yazılmış
+  - Index desteği
+- Ölçeklenebilir
+  - Replication
+  - Auto-Sharding
+- Ticari destekli (10gen)
+  - Bolca döküman
+
+# MongoDB DÖKÜMAN EKLEME
+
+Var kayit = [{
+"sicil": 2345,
+"ad": "ayse okan",
+"maas": 3000
+},
+{
+"sicil": 1234,
+"ad": "mahmut sarı",
+"maas": 5000
+}];
+db.person.insert(kayit)
+
+# MongoDB VERİTABANINI SORGULAMAK
+
+db.person.find()
+
+# Update ve Delete
+
+db.person.update({"ad":"mahmut sarı"} ,{\$set:{‘maas':5500}}) <br>
+db.person.remove({"sicil":"1234"})
+
+# Karşılaştırma İfadeleri
+
+- \$lt: Küçüktür
+- \$gt: Büyüktür
+- \$lte: Küçük Eşittir
+- \$gte: Büyük Eşittir
+- \$ne: Eşit Değildir
+
+# CASSANDRA
+
+- Cassandra da NoSql bir veri tabanı sistemi olup Facebook ve Apache tarafından geliştirilen açık kaynak kodlu bir veri tabanı sistemidir.
+- Burada da veriler JSON ve XML olarak tutulmaktadır.
+- Büyük dağıtık verilerin depolanması için MongoDB ve diğer NoSql veri tabanları gibi tercih edilen veri tabanı sistemlerinden biridir.
+
+# COUCHDB
+
+- Couchdb NoSQL tabanlı, verileri JSON formatında tutan , MapReduce indeksleri için JavaScript ve kendi API’si için HTTP kullanan, Erlang ile yazılmış open source bir veritabanı sistemidir.
+- Bir ilişkisel veritabanı aksine CouchDB veri ve tablolar arasındaki, ilişkileri saklamaz. Bunun yerine her veritabanı bağımsız belgeler topluluğu oluşturur.
+- Her doküman kendi veri ve kendi şemasını tutar ve böylece bir uygulama çoklu verilere ulaşabilir.
+- Örneğin başka bir sunucudaki bir kişinin cep telefonunda saklanan verilere ulaşmak gibi.
+- CouchDB kullanımı kolay olan ve tamamen Web i kucaklayan açık bir kaynaktır.
+- CouchBase server, kalıcı veriyi hafıza gücüyle birleştirmiş son derece hızlı veri getirebilen update edebilen bir databasedir.
+- En temel özelliği hızdır.
+- Yazma/okuma işlemlerinde key/value API’sini kullanır.
+- Kurulumu kolay ve elastik bir yapısı vardır.
+
+# HBASE
+
+- 2007 senesinde Powerset Firması tarafından geliştirilmeye başlandı.
+- HDFS üzerinde çalışabilen NoSQL datastore
+- Java ile yazılmış, Non-relational, Distributed (Dağıtık) sistem
+- Yüksek boyutta veri saklayabilir.
+- Yüksek «throughput» sağlar.
+- BigData’da rastgele okuma ve yazma yapmanıza olanak sağlar.
