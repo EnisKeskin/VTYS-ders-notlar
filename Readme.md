@@ -90,9 +90,9 @@
 ## DATABASE ENGINE
 
 - **Relational Engine** :Sorguların optimizasyonu ve çalıştırılmasından sorumludur ve 3 bölümden oluşur.
-- **Command Parser** : Sorgu yazım hatalarına karşı denetler sorgu ağacını hazırlar.
-- **Query Optimizer** : Sorgularının execution planlarının hazırlanmasını sağlar. İlk aşaması Pre-Optimization denilen ve sorgunun karmaşıklığına göre kaç plan çıkarılacağına karar verildiği aşamadır.
-- **Query Executor** : Query i çalıştırır.
+  - **Command Parser** : Sorgu yazım hatalarına karşı denetler sorgu ağacını hazırlar.
+  - **Query Optimizer** : Sorgularının execution planlarının hazırlanmasını sağlar. İlk aşaması Pre-Optimization denilen ve sorgunun karmaşıklığına göre kaç plan çıkarılacağına karar verildiği aşamadır.
+  - **Query Executor** : Query i çalıştırır.madır.
 
 ## STORAGE ENGINE
 
@@ -1220,3 +1220,458 @@ db.person.remove({"sicil":"1234"})
 - Yüksek boyutta veri saklayabilir.
 - Yüksek «throughput» sağlar.
 - BigData’da rastgele okuma ve yazma yapmanıza olanak sağlar.
+
+# ANAHTAR DEĞER TABANLI VERİTABANI
+
+- Anahtar & Değer ikililerinden (hash table) oluşan sistemdir.
+- Kolon yapısı yoktur.
+- Veriler JSON, boolean, integer gibi farklı formatında tutulabilir.
+- Çok sayıdaki küçük veriler, okuma yazma işlemi yapılan uygulamalar için uygundur.
+- Örnek sistemler: Riak, Redis, Voldemort, Memcache.
+- Kullanıldığı uygulamalar: İçerik ön belleğe alma (özellkle büyük verileri idare etmek için) logolama, arşivleme, vb.
+- Veri modülü: Anahtar-değer (Key - value)
+- Artılar: Hızlı arama, verinin dağıtık olarak depolanması iyi
+- Eksiler: Veri karmaşıklığında problem çıkar
+
+## RİAK VERİTABANI
+
+- Riak'ın key-value modelinin geleneksel ilişkisel veri tabanına kıyasla daha esnek ve daha hızlı geliştiği söylenir.
+- Riak birçok uygulama için çok uygun olmasına rağmen, mevcut olan sorgu seçenekleri ve veri türleri açısından kaçınılmaz tradeofflar vardır.
+- Bir key-value modeli ile, herhangi bir sütun veya satır kavramı yoktur, bu nedenle Riak'ın birleştirme işlemleri yoktur.
+- Riak, ya doğrudan HTTP, protokol tamponları API'si ve çeşitli istemci kütüphaneleri aracılığıyla sorgulanabilir.
+- Bununla birlikte, şu anda mevcut olan SQL veya SQL benzeri bir dil yoktur.
+- Riak, veri çakışmaları meydana geldiğinde istatistiksel olarak az sayıda olayın tespit edilmesi ve çözümlenmesine yardımcı olan özellikler sunar.
+- Bir okuma isteği yapıldığında, Riak bu nesne için tüm kopyaları arar.
+- Varsayılan olarak, Riak, nesnenin vektör saatine bakarak belirlenen en güncel sürümü döndürür.
+
+### Riak Sorgulama Seçenekleri
+
+- Riak'ın aşağıdakileri içeren birkaç güçlü sorgulama seçeneği vardır:
+  - **Riak Arama** : Apache Solr ile entegrasyon, Solr'un istemci sorgu API'ları için tam metin arama ve destek sağlar.
+  - **İkincil Endeksler** : İkincil İndeksler (2i), geliştiricilere Riak'ta depolanan bir nesneyi bir veya daha fazla sorgu değeriyle etiketleme yeteneği verir. Dizinler tamsayılar veya dizeler olabilir ve tam eşlemeler veya değer aralıkları ile sorgulanabilir.
+  - **MapReduce** : Geliştiriciler, belgelere etiketle filtre uygulamak, belgelerde kelimeleri saymak ve ilgili verilere bağlantılar çıkarmak gibi görevler için Riak MapReduce'dan yararlanabilir.
+
+### Anahtar / Değer Eşleştirmeleri
+
+- Aşağıdaki tablo genel uygulama türleri için anahtar / değer eşleştirmelerini göstermektedir:
+
+**Başvuru Türü** **Anahtar** **Değer**
+
+- Oturum, toplantı, celse Kullanıcı / Oturum Kimliği Oturum Verisi
+- Reklâm Kampanya Kimliği Reklam İçeriği
+- Kayıtlar tarih Log dosyası
+- algılayıcı Tarih, Tarih / Saat Sensör Güncellemeleri
+- Kullanıcı bilgisi Giriş, e-posta, UUID Kullanıcı Öznitelikleri
+- içerik Başlık, Tamsayı Metin, JSON / XML / HTML Belgesi, Görüntüler vb.
+- Verilerin Riak'ta düzenlenme şekli, okuma gibi erişim kalıpları dahil uygulamanın benzersiz ihtiyaçlarını dikkate almalıdır.
+
+- Riak'ın sahip olduğu:
+  - Değerin herhangi bir yapısal olmayan veri olduğu bir Anahtar / Değer modeli
+  - Daha iyi kullanılabilirlik sağlayan daha fazla veri yedeklemesi
+  - Nihai tutarlılık
+  - Basitleştirilmiş sorgu yetenekleri
+  - Riak Arama
+
+### Riak 2.0 Veri Tipleri
+
+- Sayaçlar: Riak 1.4'teki gibi
+- Bayraklar: etkin / devre dışı
+- Setleri: ikili değer koleksiyonları
+- Kayıtlar: değerleri de ikili değer olarak adlandırılan ikili
+- Haritalar: birden çok Veri Türünün iç içe geçmesini destekleyen - alanlardan oluşan bir koleksiyon
+
+# REDIS VERİTABANI
+
+- En basit haliyle Redis, key-value şeklinde tasarlanmış bir NoSQL veritabanıdır.
+- Günümüzde kullanılan çoğu programlama dillerinde benzer key-value yapılarını bellekte bilgi saklamak için kullanıyoruz.
+- Örneğin Java da Map yapılarında, ya da C#’ta Dictionary(sözlük) yapılarında key-value şeklinde yapılara rastlamak mümkün.
+- Zaten Redis in açılımına baktığımızda da “Remote Dictionary Service(Uzak Sözlük Hizmeti)” olduğunu görüyoruz.
+
+<center><image src="./image/redis.jpg"  height="500"/></center>
+
+## Özellikleri
+
+- Özellikle redis çok hızlı.
+- Sitesinde paylaşılan banchmark’lara göre saniyede 100 bin operasyonu yürütebiliyor.
+- Bunu nasıl yapıyor derseniz, sizin çalıştırdığınız tüm operasyonları bellekte çalıştırıyor ve size bellekteki veriyi dönüyor.
+- Tüm veriyi bellekte tuttuğundan bu derece seri çalışabiliyor.
+- Arzu edilirse, diske yazma seçenekleri de sunuyor.
+- Herşeyi bellekte tuttuğunu söyledik. Bu durumda insanın aklına hemen çok fazla bellek kullanabileceği geliyorFakat, redis tek bir iş yapmaya ve bu işi iyi yapmaya odaklanmış.
+- Redis, hiç bir veri barındırmazken bellekte sadece 1 mb yer kaplıyor.
+- Eğer siz basit bir key-value eşlemesi, örneğin <String,String> şeklinde bir eşleme, tutmak isterseniz, bir millyon adedi bellekte sadece 100 mb yer kaplıyor.
+- Yok ben bu kadar basit veriler tutmayacağım benim verilerim daha karmaşık derseniz, <Hash, Obj> şeklindeki verilerin (burada value alanındaki nesnemizin 5 kırılımı olduğunu varsayıyoruz) bir milyon adedi ise bellekte sadece 200mb yer kaplıyor.
+
+## Avantajları
+
+- Senkron çalıştığı için son derece hızlıdır.
+- Birçok veri türünü destekler.
+- Veriyi hem RAM üzerine hem de ayarlandığınız konfigürasyona göre disk üzerine kaydedebilir.
+- Disk üzerine kayıt yaptığı için restart sonrasında aynı verilerle çalışmaya devam eder.
+- Son derece aktif bir kullanıcı kitlesine sahiptir.
+- Sharding, Cluster, Sentinel, Replication gibi birçok enterprise özelliklere sahiptir.
+- Redis öntanımlı olarak 16 tane veritabanını destekler. Veritabanı sayısı, Redis konfigürasyonundan değiştirilebilir. Verilerinizi dilerseniz farklı veritabanlarında tutabilirsiniz.
+- Redis ile oluşturduğunuz verilerin belirli bir süre sonra otomatik olarak silinmesini sağlayabilirsiniz.
+
+## Dezavantajları
+
+- Asenkron çalışmadığı için tek instance üzerinde, asenkron alternatiflerin eriştiği performansa erişemeyebilirsiniz.
+- Veri boyutunuza göre RAM’e ihtiyacınız olur.
+- Relational veritabanlarında olduğu gibi komplex sorguları desteklemez.
+- Komplex sorgular için sorgu yapacaksanız, Redis yapısını düzgün kurgulamalısınız.
+- Bir transaction hata alırsa geri dönüşü yoktur.
+
+## Ne Kadar Hızlı
+
+- İnternette Redis için yapılmış birçok benchmark bulabilirsiniz. - Kendi bilgisayarımda denediğimde saniyede 100.000 SET/GET, pipe özelliğini açtığımda saniyede 400.000 SET/GET komutu desteklediğini görmüştüm.
+- Ancak göz önünde bulundurmamız gereken birkaç nokta var.
+- Bu sadece bir tane Redis instancesinin değerleri.
+- Birden fazla Redis instancesi oluşturup her birini işlemcinizin bir çekirdeğine ve farklı bir porta atayabilirsiniz.
+- Eğer bu yetmiyorsa kolayca bir master-slave replikasyonu oluşturabilirsiniz.
+- Bu da yetmiyorsa bir Redis cluster kullanabilirsiniz.
+- Bu noktaya geleceğinizi hiç sanmıyorum ama bu da yetmiyorsa, consistent hashing özelliklerini kullanarak verilerinizi birden fazla parçaya bölüp shardlar veya partitionlar üzerinde tutabilirsiniz.
+
+### Örnek
+
+- Bir restorantta olduğunuzu hayal edin.
+- Garsonluk yapıyorsunuz.
+- Kocaman bir masanız var ve 1000 kişi aynı masaya rezervasyon yaptırmış.
+- Müşterilerinizin herbirini siparişini veriyor.
+- “Ben tavuk sote istiyorum.” “Ben köfte istiyorum.” Hepsini bir kağıda not edip mutfağın yolunu tutuyorsunuz.
+- Redis asenkron çalışmadığı için tek garson var o da sizsiniz.
+- 1000 kişiye yemeklerini en hızlı nasıl servis edersiniz?Mutfakta bir tane yemek servis arabasına koyabildiğiniz kadaryemek koyar, onu masaya iterek götürür, hepsini dağıtır ve gerigelirsiniz.
+- Her defasında bir tane tabağı elinizde taşıyıp,masaya bırakıp, yenisini almak için mutfağa geri dönmezsiniz.
+
+## Redis komutları
+
+### Key Tanımlama
+
+- Key ve Value atama: **SET KEY_NAME VALUE**
+- Key değerini döndürme: **GET KEY_NAME**
+- Key silme: **DEL KEY_NAME** -> Geri dönüş 0 ise silinmedi 1 ise silindi
+- Key kontrol: **EXİSTS KEY_NAME** -> Geri dönüş 1 ise anahtar var 0 ise anahtar yok
+- Key süre verme: **EXPİRE KEY_NAME TİME_IN_SECONDS** -> Geri dönüş 1 ise zaman ayarlandı 0 ise ayarlanmadı.
+- Key süre verme: **PEXPİRE KEY_NAME TİME_IN_MILLISECONDS** -> Geri dönüş 1 ise zaman ayarlandı 0 ise ayarlanmadı.
+- Key zamanını öğrenme: **TTL KEY_NAME** -> İnteger değer döner ise süresi -2 döner ise zamanı yoktur.
+- Key kontrollü:**KEY \*** (tüm keyleri döner) - **KEY S**\* (s ile başlayan anahtar listesi)
+- Rasgele key döndürme: **RANDOMKEY**
+- Key yeniden isimlendirme: **RENAME KEY_NAME NEW_KEY_NAME**
+- Veri tipi: TYPE KEY_NAME
+- Birden fazla Key ekleme: **MSET KEY_NAME1 VALUE1 KEY_NAME2 VALUE2**
+- Birden fazla Key çağırma: **MGET KEY_NAME1 VALUE1 KEY_NAME2 VALUE2**
+- Key'de ki verinin istenilen kısmı: **GETRANGE KEY_NAME START END**
+- Key'de ki verinin istenilen kısma ekleme: **SETRANGE KEY_NAME START END**
+- Key'de ki verinin uzunluğu: **STRLEN KEY_NAME**
+- HASHES veri tipi
+  - HASHES veri ekleme: **HSET KEY_NAME INDEX VALUE** (index olarak ekler)
+  - HASHES veri çağırma: **HGET KEY_NAME INDEX**
+  - HASHES tümünü çağırma: **HGETALL KEY_NAME**
+- SETS Veri Tipi
+  - SETS veri ekleme: **SADD KEY_NAME VALUE** (oto index oluşturu)
+  - SETS veri çekme: **smembers KEY_NAME**
+- SORTED SETS veri tipi
+  - SORTES SETS veri ekleme: **ZADD KEY_NAME INDEX VALUE**
+  - SORTES SETS veri çekme: **ZRANGE KEY_NAME START END**
+- Liste Veri tipi
+  - Liste Veri ekleme: **LPUSH KEY_NAME VALUE**
+  - Liste Veri çekme: **LRANGE KEY_NAME START END**
+  - Liste Veri silme: **LPOP KEY_NAME**
+
+# MEMCACHE VERİTABANI
+
+- Memcached ücretsiz ve açık kaynak, yüksek performanslı, dağıtılmış bellek nesne önbellekleme sistemidir.
+- Doğası gereği geneldir, ancak anahtar değer deposu olduğu için özellikle veritabanı yükünü hafifleterek dinamik web uygulamalarını hızlandırmak için kullanışlıdır.
+- Memcached php ve veritabanı istekleri arasında uygulanabilir ve veritabanı sorgunuzun sonucunu RAM'de belirli bir süre için saklar.
+- Yapılandırmada Memcached'in kullanabileceği RAM'i ayırabilirsiniz.
+- Doğru şekilde uygulandığında, bu durum veritabanı trafiğinizi büyük ölçüde azaltabilir (bazı durumlarda% 95'den fazla) ve web mağazanızı hızlandırabilir.
+
+## Özellikleri
+
+- Önbellek üzerinde gerçekleştirilen değişiklikler veritabanına yansıtılmaz.
+- Daha önceden verilerinizi önbelleğe aldınız ve veritabanında değişiklik yaptınız.
+- Önbellekte depolanan veriler silinmedikçe veritabanındaki yeni değerler görüntülenemez.
+- Sonuçların önbelleğe alınmasındaki başlıca nedenler hız ve veritabanı trafiğinin azaltılmasıdır.
+- Varsayılan ayarları değiştirilmediği sürece Memcache ile en fazla 1MB büyüklüğünde veriyi önbeleğe alabilirsiniz.
+- Daha yüksek boyutlardaki veriler otomatik olarak kırpılır.
+- Önbelleğe alınan veri için bir takma isim tanımlanır.
+- Belirtilen takma isim en fazla 250 karakterden oluşmalıdır.
+- Genellikle veritabanı sorgularında -SQL sözcüğü md5() fonksiyonu ile şifrelenerek anahtar kelime olarak kullanılır.
+- Tüm komutlar olabildiğince hızlı ve kilit dostu olmak için uygulanır.
+- Bu, tüm kullanım durumları için deterministik sorgu hızlarına izin verir.
+- Yavaş makinelerde sorgular 1 ms'nin altında çalışmalıdır.
+- Yüksek uç sunucular, işlem hacminde saniyede milyonlarca tuşa hizmet verebilir.
+
+## Nerelerde Kullanılır
+
+- Genellikle büyük çaplı ve veritabanından yoğun bilgi sorgulama gerektiren projelerde kullanılır.
+- Bunun aksine, yazılımcının tercihine bağlı olarak her türlü projede kullanılabilir.
+- Fakat sakınılması gereken önemli bir nokta var.
+- Veritabanı üzerinde sıklıkla değişikliklerin yapıldığı bölümlerde önbellek işleminin kullanılması hatalı sonuçların görüntülenmesine neden olabilir.
+- Bu nedenle, yoğun güncelleme gerektirmeyen bölümlerde kullanılması tavsiye edilir.
+
+## Nasıl Çalışır
+
+- Memcached bir geliştirici aracıdır, bir "kod hızlandırıcı" değil, veritabanı ara katman yazılımıdır.
+- Memcached'ı kullanmak için indirdiğiniz veya satın aldığınız bir uygulamayı kurmaya çalışıyorsanız, uygulamanızın belgelerini okuyun.
+- Bu wiki ve topluluk size yardım edemeyecektir.
+
+## Tasarım felsefesi
+
+- **Basit Anahtar / Değerli Mağaza**
+  - Sunucu, verilerinizin neye benzediğini umursamıyor.
+  - Öğeler bir anahtar, bir son kullanma süresi, isteğe bağlı bayraklar ve ham verilerden oluşur.
+  - Veri yapılarını anlamıyor; önceden serileştirilmiş verileri yüklemelisiniz.
+  - Bazı komutlar (incr / decr) temel veriler üzerinde çalışabilir, ancak basit bir şekilde.
+- **İstemcide Mantık Yarısı, Sunucunun Yarısı**
+  - "Memcached bir uygulama" kısmen bir istemcidedir ve kısmen bir sunucudadır.
+  - İstemciler, bir sunucu için hangi sunucunun okuyacağını veya yazılacağını, bir sunucuyla iletişim kuramadığında ne yapılacağını seçer.
+  - Sunucular öğeleri nasıl depolayacağını ve getirdiğini anlar.
+  - Hafızayı ne zaman tahliye edip yeniden kullanacaklarını da yönetirler.
+- **Sunucuların Birbirinden Bağlantıları Kesilir**
+  - Memcached sunucuları birbirinden habersiz.
+  - Herhangi bir karışma yoktur, senkronizasyon yok, yayın yok, çoğaltma yok.
+  - Sunucuları eklemek mevcut belleği artırır.
+  - İstemcinin doğrudan sahibi olduğu sunucudaki verileri sildiği veya üzerine yazdığı için önbellek geçersiz kılma basitleştirilir.
+
+# Kolon Mimarisi Neden Tasarlanmıştır?
+
+- Kolon tabanlı veritabanları, yüksek okuma yazma
+  performansı ve yüksek erişilebilirlik (high availibity) için
+  tasarlanmıştır.
+
+- ->?JSON(JavaScript Object Notation)?
+
+<center><image src="./image/kolon.png" width="500" height="300"/></center>
+
+- **Satır anahtarı**: Her satırın, o satır için benzersiz bir tanımlayıcı olan benzersiz bir anahtarı vardır.
+- **Sütun**:Her sütun bir ad, bir değer ve zaman damgası içerir.
+- **Ad**: Bu, ad / değer çiftinin adıdır.
+- **Değer**: Bu, ad / değer çiftinin değeridir.
+- **Zaman Damgası**: Bu, verilerin eklendiği tarihi ve saati sağlar. Bu, verilerin en yeni sürümünü belirlemek için kullanılabilir.
+
+<center><image src="./image/kolon1.png" width="500" height="300"/></center>
+
+- Bir sütun ailesi birden çok satırdan oluşur.
+- Her satır, diğer satırlara farklı sayıda sütun içerebilir.
+- Sütunlar diğer satırlardaki sütunlarla eşleşmek zorunda değildir (yani farklı sütun adlarına, veri türlerine vb. Sahip olabilirler)
+
+## Nasıl çalışır?
+
+- Birden çok sunucu üzerinde dağıtık olarak çalışırlar ve bu sayede tek bir sunucuda tutulamayacak kadar büyük verileri saklayabilirler.
+- Yazma işleminde kesinti yaşanmaz fakat dağıtık yapısından dolayı kısa süreli veri tutarsızlığı (inconsistency) yaşanabilir.
+- Bu özelliği tolere edemeyen uygulamalar için uygun değildir.
+- Değer/Anahtar tabanlı veritabanları gibi veriye anahtar üzerinden erişim sağlarlar.
+- Doküman tabanlı sistemler gibi verinin tüm alanlarından sorgulama yapmak mümkün değildir.
+- Bu grupta yer alan Cassandra veritabanı geniş ikincil index ve özel veri tipleri (set, map, list, tüple, …) desteği ile çok farklı sorgu modellerine destek verebilmektedir.
+
+## Kullanım Alanları
+
+- Kolon tabanlı veritabanları, içerik yönetim sistemleri, günlük (blog) uygulamaları, uygulama kayıtlarının (log) saklanması gibi uygulamalarda yaygın olarak kullanılmaktadır.
+
+# Cassandra
+
+- Cassandra, Java ile geliştirilmiş, açık kaynak(open source), nosql veritabanı tipidir.
+- Verilerimiz RDBMS’deki gibi tablolarda tutulmuyor, onun yerine JSON ya da XML formatında column base yapısını kullanarak kaydediliyor.
+- Column base derken Cassandra bir kaç farklı sunucuda üzerinde dağıtık şekilde çalışabildiği için verileri yatay olarak ölçekleyebiliyoruz.
+- Ana makineye bağlı sunucular üzerine kurulu değil.Bu yapı, sunucu istemci mantığıyla değil de peer to peer (eşler arası) mantığıyla çalışıyor.
+- Bütün makineler eşit, makinelerden biri çöktüğünde sistem durup diğer makinelerin çalışmasını etkilemiyor.. Bu da kullanımımızı kolaylaştırıyor.
+- Hız açısından önemli bir veritabanı olduğundan genelde hızlı arama yapılan ve veritabanları büyük olan servislerin tercihi oluyor.
+
+### Cassandra-cli
+
+- **CREATE TABLE** :
+  - create column family User with comparator = UTF8Type;
+  - update column family User with column_metadata =[{column_name: first, validation_class: UTF8Type},{column_name: last, validation_class: UTF8Type},{column_name:class,validation_class: UTF8Type,index_type: KEYS}];
+- **INSERT** :
+  - assume User keys as utf8;
+  - set User[‘ying’][‘first’] = ‘Enes’;
+  - set User[‘ying’][‘last’] = ‘Fatih’;
+  - set User[‘ying’][‘class’] = ‘3’;
+- **DESCRIBE** :describe;
+- **GET** : get User[‘ying’];
+
+### MySQL karşılaştırması
+
+Cassandra > MySQL read and write
+
+# APACHE HBASE
+
+- 2007 senesinde Powerset Firması tarafından Java dili ile geliştirilmeye başlandı.
+- Milyarlarca satır Milyonlarca kolondan oluşabilen ve Hadoop üzerinde inanılmaz iyi olan bir NOSQL çözümüdür.
+- Apache Hbase %100 open source HDFS storage kullanabilen çok hızlı performansa sahip , çökmesi zor Fault toleransı olan bir NOSQL çözümüdür.
+- Yüksek boyutta veri saklayabilir (TB/PB).
+- Büyük veri (bigdata) de rastgele okuma ve yazma yapmanıza olanak sağlar.
+- Eğer random ve real time data access istiyorsanız Hbase düşünmeniz gereken bir seçenektir.
+- Hbase bir Cloumn oriented databasedir. Yani amacınız 5 milyar kayıt içerisinde kolon bazında en büyük 50 taneyi bulmaksa doğru yerdesiniz demektir.
+- Bu tarz databaselerde Key değeri birçok parçadan oluşabilir, yani key vatandaşlık numarası yada abone numarası demek doğru olmaz.
+- Key Column Family,rowid,Column qualifer ve timestampdan oluşur.
+- Value ise bu Keyin döndürdüğü değerdir.
+
+### Örnek Tablo oluşturma
+
+- **hbase> create ‘table1’, {NAME => ‘family1’, VERSIONS => 5}** burada table1 tek kolon familysinde oluşturuldu.
+- **hbase> create ‘sosyal’, {NAME => ‘facebook’},{NAME => ‘twitter’}, {NAME => ‘instagram’}** Burada Sosyal isimli tabloda facebook CF si Twitter CFsi ve Instagram CF oluşturuldu.
+
+# Graf Tabanlı NoSQL Veribanı
+
+## Graf Nedir?
+
+- Graph teorisi, matematik branşlarından birisidir.
+- Temel olarak yapısı, noktalar ve bu noktaları birleştiren yollar ile ilgilidir.
+- Graph teorisi, noktaların birbirleri ile olan ilişkilerini ve ilişkinin noktaya göre yapısını ele alır.
+- Çizge, graf, ağ, çizit…
+- Bir dizi düğüm ve bunları birbirine bağlayan ilişkilerdir.
+- Graflar varlıkları düğümler olarak gösterir
+- Bu varlıkların dünyayla nasıl ilişki kurduklarını gösterir
+- Geniş bir kullanım alanına sahip
+- Her türlü senaryoyu modellememizi sağlar
+- Esnek bir yapıya sahip
+- Düğümler, ilişkiler ve özelliklerden oluşur
+- Kullanıldığı alanlar:
+  - Bilgisayar ağları, navigasyonlar, şehirlerarası mesafe hesaplama, yol haritası çıkarma, elektronik devreler, şebeke yapıları, soyağaçları vb.
+
+<center><image src="./image/graf.png"/></center>
+
+- G=(V,E)
+  - G : Graf
+  - V : Düğüm (Node)
+  - E : Ara-çizgi (Edge)
+- V= {A,B,C,D}
+- E={[AB],[AC],[AD],[CD]}
+- Düğümler ve çizgiler özelliklere sahip olabilir
+
+## Graf Veritabanları
+
+- 7yBir graph veritabanı düğümler, kenarlar ve özelliklerle beraber graph yapılarını kullanarak veriyi sunar ve saklar.
+- Tanımsal olarak bir graph veritabanı, indissiz yakınlık (index-free adjacency) sağlayan bir veri saklama sistemidir.
+- Graph veritabanları graph teorisine dayalıdır ve düğümler, özellikler ve kenarlar içerirler.
+- Graf tabanlı veritabanlarında veriler düğümler (node), ilişkiler (edge) ve özellikler (properties) şeklinde tutulurlar.
+- Diğer veritabanı türlerinden farklı olarak veriler arasındaki ilişkiler de saklanabilir.
+
+<center><image src="./image/graf1.png"/></center>
+
+## Düğümler
+
+- Düğümler, nesneye yönelik programcıların aşina olduğu objelere
+  çok benzemektedir.
+- Düğümler insan, iş, hesap gibi takip edilmek istenen varlıkları temsil eder.
+  - Örneğin, eğer “wikipedia” düğümlerden biriyse, “web sitesi” veya “referans materyali” gibi özelliklere bağlanabileceği gibi düğümün hangi özelliklerinin veritabanı ile uyumlu olacağına bağlı olarak, “‘w’ ile başlayan kelimeler” gibi özelliklere de bağlanabilir.
+
+## Ara-çizgiler (İlişkiler)
+
+- Ara-çizgiler düğümleri düğümlere veya düğümleri özelliklere bağlayan çizgilerdir ve iki taraf arasındaki ilişkiyi temsil eder.
+- Önemli bilginin çoğu çizgilerde tutulur.
+- Birisi düğümlerin, özelliklerin ve çizgilerin bağlantılarını incelediği zaman anlamlı örüntüler ortaya çıkar.
+
+## Özellikleri
+
+- Karmaşık aramalarda daha iyi performans
+- Esnek bir yapıya sahip
+- Agile uygulama pratikleri ile uyumlu
+- Veriler arasındaki ilişkiler ve bu ilişkilerin özellikleri üzerinden sorgulama imkânı sunar.
+
+## İlişkisel Veritabanı Kavramlarına Karşılık Graf Tabanlı Veritabanı Kavramları
+
+| Tablolar            | Graflar                |
+| ------------------- | ---------------------- |
+| Satırlar            | Düğümler               |
+| KOlonlar ve Veriler | Özellikler ve Değerler |
+| Kısıtlayıcılar      | ilişkiler              |
+| Joinler             | Traversallar           |
+
+## Graf Veritabanları
+
+- GraphDB
+- GraphQL
+- neo4j
+- Infinite Graph
+- Dgraph
+- Cayley
+
+## GraphDB
+
+- Ücretsizdir.
+- Ontotext tarafından oluşturulan yüksek performanslı bir veri tabanıdır.
+- Java'da uygulanır ve RDF4J için bir Depolama ve Çıkarım Katmanı (SAIL) olarak paketlenir.
+- Yükleme, muhakeme ve sorgu değerlendirmesi büyük ontolojilere ve bilgi tabanlarına karşı bile hızlı ilerlemektedir .
+- W3C standartlarına uygunluk , performans, genişletilebilir, ölçeklenebilir, yüksek kullanılabilirlik kümesi, etkileyici, zengin ve esnek veri modeli.
+- GraphDB en çok semantik bağlam ve veri kalitesinin önemli olduğu yüksek model karmaşıklığı olan senaryolarda kullanılır.
+
+## Neo4j
+
+- Kurumsal ve gelişmiş sürümler için GPLv3 Topluluk Sürümü, ticari ve AGPLv 3, ve öğrenciler içinde ücretsiz kullanım seçenekleri mevcuttur.
+- Son derece ölçeklenebilir açık kaynak, ACID'i destekler, kurumsal dağıtımlar için yüksek kullanılabilirlikli kümelenmeye sahiptir ve tam işlem desteği ve görsel düğüm bağlantı grafik kâşifi içeren web tabanlı bir yönetim aracıyla birlikte gelir.
+- Yerleşik REST web API arayüzünü kullanarak birçok programlama dilinden erişilebilir.
+- Ocak 2017 itibarıyla kullanımda olan en popüler graf veritabanıdır.
+- Neo4j adının sonundaki ‘j’ harfinden çıkarım yapabileceğimiz üzere Java ile yazılmıştır.
+- Neo4j’deki veri yapısı temel iki kavram üzerine oturtulmuştur; düğümler ve bağlantılar.
+- Düğümler verileri, bağlantılar ise düğümler arasındaki ilişkileri gösterir.
+- Herhangi bir düğümün veya bağlantının birden fazla özelliği olabilir.
+
+## FlureeDB
+
+- Ücretsizdir.
+- Blockchain destekli uygulamalara olanak veren graph veri tabanıdır.
+- ACID ile uyumludur.
+- Dağıtılmış defter uygulamaları için üretilmiştir.
+
+# NEO4J TEMEL SORGULAR
+
+1. Create(n) -> Tek düğüm oluşturma
+2. Create(n)(m) -> Birden fazla düğüm oluşturma
+3. Create(n:insan{ad:"Enis"}) -> İçerisinde Enis adını bulunduran n adet instan düğümü oluşturur
+4. Match(n) Return n -> Tüm düğüm ve ilişkileri yazdırma
+5. Match(n) Detach Delete n -> Tüm düğüm ve ilişkileri silme
+6. Match(n:insan{name:"Enis"}) SET n.name="Sedat" Return n -> ismi "Enis" olan düğümleri getirdi ve bu düğümlerin isimleri "Sedat" olarak güncelledi
+
+## İlişki Kurma
+
+- Yönetmen grafında Quentin Tarantino adlı düğüm ile Filmler grafındaki Pulp Fiction adlı düğüm ile ilişki kurma
+
+MATCH (n : Yonetmen { name : " Quentin Tarantino "}),(b : Filmler { name : "Pulp Fiction"})
+
+MERGE (n)-[:YONETMEN]->(b)
+
+MATCH (n : Yonetmen { name : " Quentin Tarantino "}),(b : Filmler { name : "Pulp Fiction"})
+
+CREATE (n)-[:YONETMEN]->(b)
+
+## İLİŞKİ SORGUSU
+
+- İsmi Enis KESKİN olan düğümün ARKADAŞ ilişkisini gösteren sorgu
+
+MATCH (n : Kisiler {name : "Enis KESKİN"})-[r : ARKADAŞ]->(c : Kisiler) RETURN n , c
+
+## WHERE KOMUTU
+
+- Filmler grafındaki tüm düğümlerdeki yıl özelliğine bakılarak 2000 yılından önce yapılan düğümler gösterilmiştir.
+
+MATCH ( n : Filmler ) WHERE n.yil<2000 RETURN n
+
+## ORDER BY KOMUTU
+
+- Filmler grafındaki tüm düğümlerin yıl özelliğine bakarak küçükten büyüğe sıralanması yapılır.
+
+MATCH (n : Filmler) RETURN n.name, n.yil ORDER BY n.yil
+
+## COUNT KOMUTU
+
+- Enis KESKİN’in arkadaş sayısını bulan sorgu.
+
+MATCH (n:Kisiler{name:"Enis KESKİN"})-[:ARKADAŞ]->(c:Kisiler) RETURN c,COUNT(\*) as ARKADASSAYISI
+
+## Çeşitli Örnekler
+
+- Kişilerin Özcan ÖZYURT ile olan öğretmen ilişkisini sorgulama.
+  - MATCH (c:Kisiler)-[r:ÖĞRETMEN]->(n:Ogretmenler{name:"Özcan ÖZYURT"}) RETURN c,n
+- Enis KESKİN kişisinin favori filmlerini getirir.
+  - MATCH (c:Kisiler {name: "Enis KESKİN"})-[r:FAVORİ]->(n:Filmler) RETURN c,n
+- Enis KESKİN kişisinin tüm ilişkileri
+  - MATCH (c:Kisiler {name: "Enis KESKİN"})-[ ]->(n) RETURN c,n
+- Araba grafına audi düğümünün eklenmesi
+  - CREATE (n:Araba{name:"Audi"}) RETURN n
+- Özcan ÖZYURT düğümü ile Araba grafındaki Mercedes düğümü arasında detaylı ilişki kurma
+  - CREATE (b:Ogretmenler{name:"Özcan ÖZYURT"})-[:SAHİP{yil:2019}]->(n:Araba{name:"Mercedes"}) RETURN b,n
+- Enis KESKİN ile Yaşar KURT arasındaki arkadaşlık ilişkisinin silinmesi
+  - MATCH (n:Kisiler{name:"Enis KESKİN"})-[r:ARKADAŞ]->(b:Kisiler{name:"Yaşar KURT"}) DELETE r
+- Enis KESKİN’in arkadaşlarının arkadaşlarını bulan sorgu.
+  - MATCH (n:Kisiler{name:"Enis KESKİN"})-[:ARKADAŞ]->(c:Kisiler)-[:ARKADAŞ]->(f:Kisiler) RETURN f
