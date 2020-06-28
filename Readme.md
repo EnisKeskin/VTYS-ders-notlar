@@ -1,8 +1,9 @@
+
 # <center>Açık/Kapalı Kaynak Kod İlişkisel VTYS Yazılımları Ve Mimarilerinin Karşılaştırmalı Analizleri</center>
 
 # Açık Kaynak Kodlu Yazılım(Open Source)
 
-- Açık kaynak  kodlu yazılım, kaynak kodu isteyen herkese açık olan yazılımlardır.
+- Açık kaynak  kodlu yazılım, kaynak kodu isteyen herkese açık olan yazılımlardır.
 - Bu tür yazılımların ayırt edici özelliği kullanıcıya yazılımı değiştirme özgürlüğü sağlamasıdır.
 
 - Açık kaynak kodlu yazılımlar;
@@ -16,7 +17,7 @@
 
 - Açık kaynak alternatifleri artıyor olmasına rağmen, kişisel bilgisayarlar, özellikle masaüstü bilgisayarlar, üzerinde en çok kullanılan işletim sistemleri, kapalı kaynak olma eğilimindedir.
 
-- Geliştirilme şansı yoktur, ücretlidir.
+- Geliştirilme şansı yoktur, ücretlidir.
 
 # AÇIK VE KAPALI KAYNAK YAZILIMLARIN AVANTAJLARI
 
@@ -33,23 +34,23 @@
 
 # İlişkisel Veri Tabanı Yönetim Sistemleri
 
-- lişkisel veri tabanı, organize edilmiş verilerin tablolarda saklanması ve bu tablolar arasında kurulan bağ ile oluşan veri tabanı çeşididir.
+- ilişkisel veri tabanı, organize edilmiş verilerin tablolarda saklanması ve bu tablolar arasında kurulan bağ ile oluşan veri tabanı çeşididir.
 - Tablolar satır ve sütunlardan oluşur, üzerinde verileri saklayabilir, ekleyebilir, silebilir ve güncelleyebiliriz.
 - Her satır aynı sütunlara yani alanlara sahiptir.
 - Her bir sütun o tabloda bulunması gereken ortak özellikleri yansıtır.
 - Tablo üzerinde ki her bir satıra ise kayıt diyoruz
 - Tablolar arasında kurulan ilişkiler ile verileri organize bir şekilde işlemek mümkün.
-- **Veri Tekrarı (Data Redundancy)**: Aynı verilerin tekrarlanması önlenir.
-- **Veri Tutarlılığı (Data Consistency)**: Personel tablosuna personelin bölümü yazıldığında sistem böyle bir bölümün Bölüm tablosunda olup olmadığını kontrol eder.
-- **Veri Bütünlüğü (Data Integrity)**: Verinin farklı tablolarda ayrıldığı durumlarda, verilerin tümünün bir bütün olarak kullanılmasını sağlar.
-- **Veri Güvenliği (Data Security)**: Yetkilendirme sistemi sayesinde hangi verilere kimin ulaşabileceğini belirleyerek verileri koruma altına alırız.
-- **Veri Paylaşımı | Eşzamanlılık (Concurrency)**: Bir veri tabanına veri bütünlüğü ve tutarlılığı bozulmadan ağ üzerinden binlerce kullanıcı tarafından erişim sağlanabilir.
-- **Veri Bağımsızlığı (Data Independence)**: Kullanıcıdan arka planda verilerin fiziksel alan üzerinde nasıl depolandığı yada ne tarz algoritmalar ile organize olduğunun gizlenmesidir.
+- **Veri Tekrarı (Data Redundancy)**: Aynı verilerin tekrarlanması önlenir.
+- **Veri Tutarlılığı (Data Consistency)**: Personel tablosuna personelin bölümü yazıldığında sistem böyle bir bölümün Bölüm tablosunda olup olmadığını kontrol eder.
+- **Veri Bütünlüğü (Data Integrity)**: Verinin farklı tablolarda ayrıldığı durumlarda, verilerin tümünün bir bütün olarak kullanılmasını sağlar.
+- **Veri Güvenliği (Data Security)**: Yetkilendirme sistemi sayesinde hangi verilere kimin ulaşabileceğini belirleyerek verileri koruma altına alırız.
+- **Veri Paylaşımı | Eş zamanlılık (Concurrency)**: Bir veri tabanına veri bütünlüğü ve tutarlılığı bozulmadan ağ üzerinden binlerce kullanıcı tarafından erişim sağlanabilir.
+- **Veri Bağımsızlığı (Data Independence)**: Kullanıcıdan arka planda verilerin fiziksel alan üzerinde nasıl depolandığı yada ne tarz algoritmalar ile organize olduğunun gizlenmesidir.
 
 # Transaction
 
 - Transaction , daha küçük parçalara ayrılamayan en küçük işlem yığınına denir
-- “Transaction”, prensip olarak ya bütün işlemleri gerçekleştirir ya da hiçbirini gerçekleştirmez. İşlemlerden biri dahi başarısız olursa, bu prensip nedeniyle hiçbir işlem olmamış kabul edilir;
+- “Transaction”, prensip olarak ya bütün işlemleri gerçekleştirir ya da hiçbirini gerçekleştirmez. İşlemlerden biri dahi başarısız olursa, bu prensip nedeniyle hiçbir işlem olmamış kabul edilir;
 - Bu işlemler sırasında veriler üzerindeki değişikliklerin de tutarlı olması, birbirlerini tamamlayıcı nitelik taşıması gerekir.
 - Transaction çeşitleri 4 tanedir.
   - Begin Transaction
@@ -60,10 +61,10 @@
 # ACID (Atomicity,Consistency,Isolation,Durability)
 
 - İlişkisel veritabanlarındaki Transaction için tanımlanmış özellik setidir.
-- **Atomicity(Bütünlük)**: Transaction işlemini bir bütün olarak görür.
-- **Consistency(Tutarlılık)**: Transaction işlemi sonucunda veritabanındaki verinin geçerli durumunun, bir sonraki geçerli duruma geçmesidir.
+- **Atomicity(Bütünlük)**: Transaction işlemini bir bütün olarak görür.
+- **Consistency(Tutarlılık)**: Transaction işlemi sonucunda veritabanında ki verinin geçerli durumunun, bir sonraki geçerli duruma geçmesidir.
 - **Isolation(izolasyon)**: Aynı anda birden fazla işlem gerçekleştirilmesini engeller.
-- **Durability(Dayanıklılık)**: Transaction sırasında fiziksel veya işlemsel bir hata olması durumunda sistemin kendisini bir önceki geçerli veri durumuna döndürebilme kabiliyetidir.
+- **Durability(Dayanıklılık)**: Transaction sırasında fiziksel veya işlemsel bir hata olması durumunda sistemin kendisini bir önceki geçerli veri durumuna döndürebilme kabiliyetidir.
 
 # ACID Özet
 
@@ -78,10 +79,10 @@
 
 # Popüler Kapalı Kaynak Kod Veri Tabanı Sistemleri
 
-- Microsoft SQL Server
+- Microsoft SQL Server (MsSQL)
 - Oracle
 
-# Microsoft SQL Server
+# Microsoft SQL Server (MsSQL)
 
 - Performanslı bir şekilde çalıştırabilecek çok güçlü bir veri tabanı yönetim sistemidir.
 - Database Engine kendi arasında iki gruba ayrılıyor.
@@ -113,11 +114,11 @@
 
 ## 1. Oracle Memory Birimleri
 
-- **System Global Area (SGA)**: SGA bir oracle instance için, data ve control bilgilerinin tutulduğu, bütün server ve processler tarafından kullanılan, paylaşımlı memory alanıdır.
+- **System Global Area (SGA)**: SGA bir oracle instance için, data ve control bilgilerinin tutulduğu, bütün server ve processler tarafından kullanılan, paylaşımlı memory alanıdır.
 
 - **Process Global Area (PGA)**: Bir oracle server veya background process başlatıldığında oluşturulan, paylaşımlı olmayan, herbir process in kendine ait alanının bulunduğu , data ve control bilgilerinin tutulduğu memory alanıdır.
 
-### System Global Area (SGA) Memory Birimleri
+### System Global Area (SGA) Memory Birimleri
 
 - **Database Buffer Cache**: Database’den query'ler yardımıyla çekilen dataların tutulduğu yada saklandığı alandır.
 - **Redo Log Buffer**: Instance crash olduğunda recover edilebilmesi için gerekli bilgilerin cache lendiği alandır
@@ -130,21 +131,21 @@
 
 - **User Process**: Bir kullanıcı SQL\*PLUS gibi bir uygulama kullanarak oracle database ‘e bağlandığında Oracle Database Bu kullanıcının uygulamalarını çalıştırabilmesi için bir process oluşturur
 - **Database Processler**: Oracle database tarafından oluşturulan processlerdir.
-- **Database Writer Process (DBW)**: Daha önce bahsettiğimiz memory bölümü olan Database Buffer Cache içeriğini diske yazan process dir.
-- **Log Writer Process (LGWR)**: Redolog Buffer daki verileri redolog file’ lara yazan processdir.
-- **Checkpoint Process (CKPT)**: Chechkpoint bir tur system değiştirme numaraları saklayan data birimleridir.
-- **System Monitor Process (SMON)**: Database in tutarsız bir şekilde kapanmasında recovery yapmak içindir.
-- **Process Monitor Process (PMON)**: Bir kullanıcı process’ i fail olduğunda process recovery işlemini PMON yapar.
-- **Recoverer Process (RECO)**: Dağınık database configurasyonları ile birlikte kullanılır.
-- **Archiver Process (ARCn)**:  Redolog dosyalarını yedekler.ARCn processinin çalışması için database ARCHIVELOG MODE da olmalı ve Automaticarchiving enable olmalıdır.
+- **Database Writer Process (DBW)**: Daha önce bahsettiğimiz memory bölümü olan Database Buffer Cache içeriğini diske yazan process dir.
+- **Log Writer Process (LGWR)**: Redolog Buffer daki verileri redolog file’ lara yazan processdir.
+- **Checkpoint Process (CKPT)**: Chechkpoint bir tur system değiştirme numaraları saklayan data birimleridir.
+- **System Monitor Process (SMON)**: Database in tutarsız bir şekilde kapanmasında recovery yapmak içindir.
+- **Process Monitor Process (PMON)**: Bir kullanıcı process’ i fail olduğunda process recovery işlemini PMON yapar.
+- **Recoverer Process (RECO)**: Dağınık database configurasyonları ile birlikte kullanılır.
+- **Archiver Process (ARCn)**:  Redolog dosyalarını yedekler.ARCn processinin çalışması için database ARCHIVELOG MODE da olmalı ve Automaticarchiving enable olmalıdır.
 
 ## 3. Oracle Database Depolama Birimleri
 
-**Control Files**: Database ile ilgili bilgilerin, control datalarının tutulduğu dosyalardır. 
+**Control Files**: Database ile ilgili bilgilerin, control datalarının tutulduğu dosyalardır. 
 **Data Files**: Kullanıcı ve uygulamalara ait dataların tutulduğu dosyalardır.
 **Online RedoLog Files**: İnstance recovery dosyalarının tutulduğu filelerdir.
-**Parameter File**: İnstance configurasyon bilgilerinin tutulduğu dosyadır.
-**Password File**: Remote olarak db ye bağlanıp yönetimsel taskların gerçekleştirilmesine izin verir.
+**Parameter File**: İnstance configurasyon bilgilerinin tutulduğu dosyadır.
+**Password File**: Remote olarak db ye bağlanıp yönetimsel taskların gerçekleştirilmesine izin verir.
 **Backup Files**:Database Recovery için kullanılır.
 **Archived Redo Log Files**:Historik olarak data değişim bilgilerini tutar.Bu dosyalar ile birlikte backup dosyaları kullanılarak kayıp datalar recover edilebilir.
 **Trace and Alert Files**: Her bir server ve background processlerin kayıtlarının tutulduğu, hataların yazıldığı dosyalardır. Bu dosyalardan faydalanılarak processler izlenebilir, sessionlar monitor edilebilir.
@@ -157,46 +158,46 @@
 
 # Eşzamanlı Erişim ve Bekleme Süresi
 
-- Yazma işlemi devam ederken, MS SQL Server'da hiçbir okuma izni yoktur ve bu okumak için bile uzun bir bekleme süresine neden olur .
-- Yazım süreci Oracle'da devam ederken, kullanıcıların eski kopyayı güncellemeden hemen önce okumasına izin veriyor. Bu nedenle, Oracle'da daha kısa bekleme süresi var, ancak yazmanıza izin verilmiyor.
+- Yazma işlemi devam ederken, MS SQL Server'da hiçbir okuma izni yoktur ve bu okumak için bile uzun bir bekleme süresine neden olur .
+- Yazım süreci Oracle'da devam ederken, kullanıcıların eski kopyayı güncellemeden hemen önce okumasına izin veriyor. Bu nedenle, Oracle'da daha kısa bekleme süresi var, ancak yazmanıza izin verilmiyor.
 
 # Platform Desteği
 
-- MS SQL Server yalnızca bir Windows platformunda çalıştırılabilir. Platform desteğinin eksikliği nedeniyle, farklı işletim sistemleri ile dünya çapında çalışan işletmeler için en uygun değildir.
-- Oracle, UNIX, Windows, MVS ve VAX-VMS gibi çeşitli platformlarda çalıştırılabilir. İyi bir platform desteği sunar ve dolayısıyla farklı işletim sistemleri kullanan işletmelerde kullanılabilir.
+- MS SQL Server yalnızca bir Windows platformunda çalıştırılabilir. Platform desteğinin eksikliği nedeniyle, farklı işletim sistemleri ile dünya çapında çalışan işletmeler için en uygun değildir.
+- Oracle, UNIX, Windows, MVS ve VAX-VMS gibi çeşitli platformlarda çalıştırılabilir. İyi bir platform desteği sunar ve dolayısıyla farklı işletim sistemleri kullanan işletmelerde kullanılabilir.
 
 # Sıralama, Önbelleğe Alma vb. İçin Bellek Ayırma
 
-- MS SQL Server global bir bellek ayırma işlemini izler ve bu nedenle sıralama veya daha iyi performans için önbelleğe alma işlemi sırasında DBA tarafından değiştirilemez. Bu şekilde insan hatalarından kaçınılabilir.
+- MS SQL Server global bir bellek ayırma işlemini izler ve bu nedenle sıralama veya daha iyi performans için önbelleğe alma işlemi sırasında DBA tarafından değiştirilemez. Bu şekilde insan hatalarından kaçınılabilir.
 - Oracle, performansı artıran dinamik bir bellek ayırma kullanıyor ancak performansını artırmak için DB'ye girdiğinizde insan hataları olasılığı yüksek.
 
 # Tablo Bölme
 
-- MS SQL Server, büyük tabloların daha fazla bölünmesine izin vermez, bu da verileri yönetmeyi zorlaştırır. Bununla birlikte, basitlik söz konusu olduğunda MS SQL Server ilk sırayı alıyor.
+- MS SQL Server, büyük tabloların daha fazla bölünmesine izin vermez, bu da verileri yönetmeyi zorlaştırır. Bununla birlikte, basitlik söz konusu olduğunda MS SQL Server ilk sırayı alıyor.
 - Oracle, büyük tabloların bölümlerine izin verilerek daha kolay veri yönetimine yardımcı olur.
 
 # Harici dosyaları bağlama
 
-- MS SQL Server, harici dosyaları okumak veya yazmak için bağlantılı sunucuları kullanır; Oracle aynı şeyi yapmak için Java kullanıyor.
+- MS SQL Server, harici dosyaları okumak veya yazmak için bağlantılı sunucuları kullanır; Oracle aynı şeyi yapmak için Java kullanıyor.
 - Her ikisi de bu dosyaları birbirine bağlama seçeneğine sahiptir ve bu nedenle yalnızca yaklaşımlarının farklı olduğunu söyleyebiliriz.
 
 # Arayüz
 
-- Basit ve kullanıcı dostu arayüz gerçekten MS SQL Server ile ilişkili mükemmel bir özelliktir. Otomatik olarak istatistiksel veriler ve kendi kendine ayarlar tek başına oluşturur. Ayrıca, herkes büyük miktarda kaynak bulunduğundan MS SQL Server'ı kolayca öğrenebilir.
+- Basit ve kullanıcı dostu arayüz gerçekten MS SQL Server ile ilişkili mükemmel bir özelliktir. Otomatik olarak istatistiksel veriler ve kendi kendine ayarlar tek başına oluşturur. Ayrıca, herkes büyük miktarda kaynak bulunduğundan MS SQL Server'ı kolayca öğrenebilir.
 - Oracle kullanıcı arayüzü önceki ile aynı seviyede ancak işlemek ve öğrenmek biraz karmaşıktır.
 
 # Sonuç: En İyi Kullanım
 
-- MS SQL Server'ı Oracle ile karşılaştırdığımızda, eski SQL'in küçük veritabanları için en uygun olduğunu söyleyebiliriz. İşlemlerini beklemek için zamanınız varsa, daha büyük boyutlu veritabanları için sıkıcı zaman alan işlemler gerektirdiğinden ,dağıtmak en basit olanıdır.
+- MS SQL Server'ı Oracle ile karşılaştırdığımızda, eski SQL'in küçük veritabanları için en uygun olduğunu söyleyebiliriz. İşlemlerini beklemek için zamanınız varsa, daha büyük boyutlu veritabanları için sıkıcı zaman alan işlemler gerektirdiğinden ,dağıtmak en basit olanıdır.
 - Aksi takdirde, Oracle ile birlikte devam edin çünkü kolaylıkla daha büyük bir veritabanını destekliyor.
 
 # Popüler Açık Kaynak Kod Veri Tabanı Sistemleri
 
-- MySQL
-- SQLite
-- PostgreSQL
-- Cubrid
-- Firebird
+- **MySQL**
+- **SQLite**
+- **PostgreSQL**
+- **Cubrid**
+- **Firebird**
 
 # MYSQL
 
@@ -225,23 +226,23 @@
 
 # SQLite
 
-- SQLite, dünyada en çok dağıtılan ve geliştiricilere kullanması için tavsiye edilen ve tamamen açık kaynak kodlarına sahip,  C ve C++ programlama dilleriyle kodlanmış, sunucu yazılımı ve yapılandırma gereksinimi olmayan, işlemsel ve ilişkisel bir SQL veritabanı motorudur.
+- SQLite, dünyada en çok dağıtılan ve geliştiricilere kullanması için tavsiye edilen ve tamamen açık kaynak kodlarına sahip,  C ve C++ programlama dilleriyle kodlanmış, sunucu yazılımı ve yapılandırma gereksinimi olmayan, işlemsel ve ilişkisel bir SQL veritabanı motorudur.
 
 ## SQLite Mimarisi
 
-- SQLite, çalışacak bir sunucu gerektirmez.
-- SQLite veritabanı, veritabanına erişen uygulama ile entegre edilmiştir. Uygulamalar SQLite veritabanı ile etkileşime girer ve doğrudan diskte saklanan veritabanı dosyalarından yazabilir.
+- **SQLite, çalışacak bir sunucu gerektirmez.**
+- SQLite veritabanı, veritabanına erişen uygulama ile entegre edilmiştir. Uygulamalar SQLite veritabanı ile etkileşime girer ve doğrudan diskte saklanan veritabanı dosyalarından yazabilir.
 
 ## SQLite Veri Erişim Bileşenleri (LiteDAC) Özellikleri
 
-- **SQLite Şifreleme** - Verilerinizi yetkisiz erişime karşı korumak için, LiteDAC güçlü ve özelleştirilebilir bir SQLite Veritabanı Şifreleme motoru sağlar.
-- **SQLite Özelliklerinin Geniş Kapsamı** - LiteDAC, en gelişmiş veritabanı işlevselliğine erişim sağlayarak, geliştiricilerin SQLite'nin tüm özelliklerini kullanmasına ve veritabanı uygulamalarını optimize etmesine olanak tanır.
-- **Mobil Geliştirme** - LiteDAC kullanarak iOS ve Android mobil cihazlara yönelik Develompent, LiteDAC'ın mobil uygulamalarınızın masaüstü uygulamalarının yaptığı gibi SQLite veritabanıyla çalışmasına izin verdiği için daha da kolay hale geliyor.
+- **SQLite Şifreleme** - Verilerinizi yetkisiz erişime karşı korumak için, LiteDAC güçlü ve özelleştirilebilir bir SQLite Veritabanı Şifreleme motoru sağlar.
+- **SQLite Özelliklerinin Geniş Kapsamı** - LiteDAC, en gelişmiş veritabanı işlevselliğine erişim sağlayarak, geliştiricilerin SQLite'nin tüm özelliklerini kullanmasına ve veritabanı uygulamalarını optimize etmesine olanak tanır.
+- **Mobil Geliştirme** - LiteDAC kullanarak iOS ve Android mobil cihazlara yönelik Develompent, LiteDAC'ın mobil uygulamalarınızın masaüstü uygulamalarının yaptığı gibi SQLite veritabanıyla çalışmasına izin verdiği için daha da kolay hale geliyor.
 - **Performans**- Tüm bileşenler ve kütüphaneler, yüksek performanslı, hafif veri erişim katmanları yazmanıza yardımcı olacak şekilde tasarlanmıştır, bu nedenle gelişmiş veri erişim algoritmaları ve optimizasyon teknikleri kullanırlar.
 
 # PostgreSQL
 
-- PostgreSQL, 15 yıldan fazla aktif gelişme ile Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64) ve Windows dahil olmak üzere tüm önemli işletim sistemlerinde çalışan bir diğer mükemmel açık kaynak seçeneğidir. PostgreSQL ayrıca tamamen ACID (Atomiklik,Tutarlılık, Isolasyon, Dayanıklılık) uyumludur.
+- PostgreSQL, 15 yıldan fazla aktif gelişme ile Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64) ve Windows dahil olmak üzere tüm önemli işletim sistemlerinde çalışan bir diğer mükemmel açık kaynak seçeneğidir. PostgreSQL ayrıca tamamen ACID (Atomiklik,Tutarlılık, Isolasyon, Dayanıklılık) uyumludur.
 
 ## Artıları
 
@@ -285,7 +286,7 @@
 
 # Firebird
 
-- Bu ilişkisel veritabanı, 1981'den beri üretim sistemlerinde (çeşitli isimler altında) kullanılmıştır ve birçok ANSI SQL standardına sahiptir. Firebird Linux, Windows ve çeşitli Unix platformlarında çalışabiliyor.
+- Bu ilişkisel veritabanı, 1981'den beri üretim sistemlerinde (çeşitli isimler altında) kullanılmıştır ve birçok ANSI SQL standardına sahiptir. Firebird Linux, Windows ve çeşitli Unix platformlarında çalışabiliyor.
 
 ## Artılar
 
@@ -309,16 +310,16 @@
 
 - Bulut bilişim teknolojisinin gelişmesi sayesinde, büyük verilerin internet üzerinde depolanabilirliği ve bu verilerin erişilebilirliği olanaklı hale gelmiştir.
 
-- Bulut bilişim fikrinin temelleri 1950’li yıllarda atılmıştır. İnternet devlerinden olan Amazon, veri merkezlerini modernize ederek bulut bilişimin gelişmesinde anahtar bir rol oynayarak ilk gerçek bulut bilişim hizmeti olan Amazon S3’ün 2006 yılında hizmete girmesini sağladı.
+- Bulut bilişim fikrinin temelleri 1950’li yıllarda atılmıştır. İnternet devlerinden olan **Amazon**, veri merkezlerini modernize ederek bulut bilişimin gelişmesinde anahtar bir rol oynayarak ilk gerçek bulut bilişim hizmeti olan Amazon S3’ün 2006 yılında hizmete girmesini sağladı.
 
-- Günümüz teknolojisindeki mevcut cihazlarda kullanıcılar her geçen gün daha fazla kişisel veri (data) saklamak istediği için barındırma kapasitesi büyük sorunlara sebep olmaktadır.
+- Günümüz teknolojisindeki mevcut cihazlarda kullanıcılar her geçen gün daha fazla kişisel veri (data) saklamak istediği için barındırma kapasitesi büyük sorunlara sebep olmaktadır.
 
 - En düşük kapasiteli cihazla bile istenilen yerden istenildiği zaman her tür bilgiye, kişisel veriye ulaşmayı sağlıyor.
 
 # Bulut Bilişim hizmet modelleri
 
-- SaaS (Software as a Service); Yazılımı servis olarak sunma,
-- PaaS (Platform as a Service); Platform hizmeti  ve
+- SaaS (Software as a Service); Yazılımı servis olarak sunma,
+- PaaS (Platform as a Service); Platform hizmeti  ve
 - IaaS (Infrastructure as a Service); Sunucu altyapı hizmeti.
 
 <center><image src="./image/cchizmetmodeli.png" width="400" height="300"/></center>
@@ -330,7 +331,7 @@
 ## Hizmet olarak yazılım (Software as a Service -SaaS)
 
 - Hizmet olarak yazılım, yazılım uygulamalarını internet üzerinden isteğe bağlı olarak ve genellikle bir abonelik aracılığıyla dağıtma yöntemidir.
-- SaaS sayesinde bulut sağlayıcıları, yazılım uygulamalarını ve temel altyapıyı barındırıp yönetmenin yanı sıra yazılım yükseltmeleri ve güvenlik düzeltme eki uygulama gibi bakım işlerini de üstlenir.
+- **SaaS sayesinde bulut sağlayıcıları, yazılım uygulamalarını ve temel altyapıyı barındırıp yönetmenin yanı sıra yazılım yükseltmeleri ve güvenlik düzeltme eki uygulama gibi bakım işlerini de üstlenir.**
 
 ## Hizmet olarak platform (Platform as a Service -PaaS)
 
@@ -339,11 +340,11 @@
 
 ## Hizmet Olarak Altyapı (Infrastructure as a Service -IaaS)
 
-- Bulut bilgi işlem hizmetlerinin en temel kategorisidir. IaaS, bir bulut sağlayıcısından kullandıkça öde esasına dayalı olarak BT altyapısı (sunucular ve sanal makineler (VM), depolama, ağ, işletim sistemleri) kiralamanıza olanak tanır.
+- Bulut bilgi işlem hizmetlerinin en temel kategorisidir. IaaS, bir bulut sağlayıcısından kullandıkça öde esasına dayalı olarak **BT altyapısı (sunucular ve sanal makineler (VM), depolama, ağ, işletim sistemleri) kiralamanıza olanak tanır.**
 
 # Bulut Bilişim’ in Geliştirme Modelleri
 
-- 4 ayrı çeşidi ile karşımıza çıkan bu teknoloji  farklı alanlarda,farklı biçimlerde kullanılmaya olanak sağlıyor.
+- 4 ayrı çeşidi ile karşımıza çıkan bu teknoloji  farklı alanlarda,farklı biçimlerde kullanılmaya olanak sağlıyor.
 
 <center><image src="./image/ccgelistirmemodeli.png" width="300" height="300"/></center>
 
@@ -352,12 +353,12 @@
 ## Public Cloud (Genel Bulut)
 
 - İnternet üzerindeki sunucular ile kurulan bir bulut teknolojisi.
-- Küçük ve orta ölçekli şirketlerde kullanacağınız kullandığınız kadar ödeme yapılan  bu modele örnek olarak, elektronik postalar gösterilebilir.
+- Küçük ve orta ölçekli şirketlerde kullanacağınız **kullandığınız kadar ödeme** yapılan  bu modele örnek olarak, elektronik postalar gösterilebilir.
 
 ## Private Cloud (Özel Bulut)
 
 - Bilgileri önemli olan büyük şirketlerin tercih ettiği bir bulut teknolojisidir.
-- Tüm bilgiler kurucunun elinin altındadır ve erişim güvenliği  ve gizliliği yüksektir.
+- Tüm bilgiler kurucunun elinin altındadır ve erişim **güvenliği  ve gizliliği** yüksektir.
 
 ## Hybrid Cloud (Melez Bulut)
 
@@ -371,18 +372,18 @@
 
 # Bulut Teknolojisi’nin Getirdiği Avantajlar
 
-- Bulut bilişim sistemleri API’ler ile hızlı kullanım kolaylığı sağlıyor.
+- Bulut bilişim sistemleri **API’ler ile hızlı kullanım** kolaylığı sağlıyor.
 - Daha fazla depolama alanı, hızlı veri transferi ve bu yedekleme üzerinde maliyet tasarrufu yapabilme gibi bir takım olanaklar sağlıyor.
-- Sürekli olarak artan verilerin arşivlenmesi, kullanıcıların yetki ve takibi gibi konuların oluşturduğu alt yapı karmaşası ortadan kalkıyor.
-- Bulut teknolojisi yazılımları web tarayıcıları üzerinden çalıştığından, bilgisayar, tablet, akıllı telefon ve  Smart TV'ler de kullanılarak platform bağımlılığından koruyor.
-- Bulut yazılım hizmetini veren şirketlerin  verilerinin tutulduğu serverları 7/24 yazılım ve donanımsal olarak güvenlik tedbirlerini aldıklarından dolayı ana bilgisayardan daha güvenlidir.
-- **Kısaca; bulut bilişim çok daha ucuza, kurulum gerektirmeden, her yerden çalışmayı desteklen bir hizmettir.**
+- Sürekli olarak artan verilerin arşivlenmesi, kullanıcıların yetki ve takibi gibi konuların oluşturduğu **alt yapı karmaşası ortadan kalkıyor.**
+- Bulut teknolojisi yazılımları web tarayıcıları üzerinden çalıştığından, bilgisayar, tablet, akıllı telefon ve  Smart TV'ler de kullanılarak platform bağımlılığından koruyor.
+- Bulut yazılım hizmetini veren şirketlerin  verilerinin tutulduğu serverları 7/24 yazılım ve donanımsal olarak güvenlik tedbirlerini aldıklarından dolayı ana bilgisayardan daha güvenlidir.
+- **Kısaca; bulut bilişim çok daha ucuza, kurulum gerektirmeden, her yerden çalışmayı desteklen bir hizmettir.**
 
 # Bulut Teknolojisi’nin Dezavantajları
 
 - Bulut teknolojisi servisi kullanarak veri saklanması, kullanıcının verilerini riske atması bilgi güvenliğini ve kullanıcı gizliliğini sağlayamamaktadır. Güvenlik açıkları oldukça fazladır.
 - Ülkelerin ekonomik durumlarından dolayı dijital bölünmeyi arttıracak, bu da uluslararası, politik ve ekonomik sorunlar doğuracaktır.
-- En önemli sorun ise depolanan verilere ulaşılabilmesi için internet bağlantısının olması gerekmektedir.
+- En önemli sorun ise depolanan verilere ulaşılabilmesi için **internet bağlantısının olması** gerekmektedir.
 - Hizmetlerinin gelişmesiyle birlikte donanımsal ve yazılımsal bakım ve tamir maliyetlerinin azalacak olması ve buna bağlı olarak da bu işi yapan Bilgi Teknolojisi (BT) uzmanlarının iş sahalarının daralması durumu da son dezavantajlardan birisidir.
 
 # Bulut Bilişim Mimari Yapısı
@@ -479,7 +480,7 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
   - Reklam tıklama verileri
 
 - Günümüzde 90% oranında yapılandırılmamış veri bulunmaktadır
-- Günümüzde 10% oranında yapılandırıl veri bulunmaktadır
+- Günümüzde 10% oranında yapılandırılmış veri bulunmaktadır
 
 # Bilgi çöplüğü
 
@@ -488,7 +489,7 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 
 # BİG DATA ORTAYA ÇIKIŞI ve amacı
 
-- Bu çöplükten anlamlı verilerin de çıkabileceğini düşünen yazılım şirketleri, AR-GE çalışmalarını bu anlamda yürüterek Big Data olarak isimlendirdiğimiz olguyu ortaya çıkarttılar.
+- Bu çöplükten anlamlı verilerin de çıkabileceğini düşünen yazılım şirketleri, AR-GE çalışmalarını bu anlamda yürüterek Big Data olarak isimlendirdiğimiz olguyu ortaya çıkarttılar.
 - Bilgi çöplüğü denilen çok büyük boyutlardaki verileri anlamlı ve işlenebilir bir hale getirmek
 
 # Big data hedefleri
@@ -557,19 +558,19 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 
 # VTYS-BİG DATA VE BULUT İLİŞKİSİ
 
-- Bulut Veritabanı kullanım şekillerinin artma gereksinimi bu alanda teknoloji ilerlemelerini sağlamaktadır.
-- Bulut Veritabanı başlangıçta, müşteriye sadece veriyi okuma olanağı sağlamıştır.
-- Ancak, müşterilerin taleplepleri üzerine,yazma sorgusu da yer aldı.
-- Bu işlemler Web 2.0 teknolojisinin getirilmesi ile mümkün olmuştur.
-- Bulut Veritabanında okuma isteklerinin sayısı hala yazma isteğin daha fazla olduğu görülmektedir.
-- Ancak yakın zamanda okuma sayısıda Bulut Veritabanında artacaktır.
-- Bu eğilim okuma ve yazma istekleri arasındaki boşlukları daralmaya başlamıştır.
+- Bulut Veritabanı kullanım şekillerinin artma gereksinimi bu alanda teknoloji ilerlemelerini sağlamaktadır.
+- Bulut Veritabanı başlangıçta, müşteriye sadece veriyi okuma olanağı sağlamıştır.
+- Ancak, müşterilerin taleplepleri üzerine,yazma sorgusu da yer aldı.
+- Bu işlemler Web 2.0 teknolojisinin getirilmesi ile mümkün olmuştur.
+- Bulut Veritabanında okuma isteklerinin sayısı hala yazma isteğin daha fazla olduğu görülmektedir.
+- Ancak yakın zamanda okuma sayısıda Bulut Veritabanında artacaktır.
+- Bu eğilim okuma ve yazma istekleri arasındaki boşlukları daralmaya başlamıştır.
 - Büyük veri yönetimi sağlayan big data, verileri sanal bir sunucuda tutmamıza yarayan bulut bilişim ve verilerin dijital ortamda saklanmasını sağlayan veri tabanı birbirini destekleyen ve birbirinin önünü açan 3 teknolojidir.
 
 # Nesnelerin interneti (Internet of things)
 
 - Nesnelerin interneti, fiziksel nesnelerin birbirleriyle veya daha büyük sistemlerle bağlantılı olduğu iletişim ağıdır.
-- Amerikan Federal Ticaret Komisyonu nesnelerin internetini "günlük kullanımımızda olan nesnelerin internete bağlanıp veri gönderip alması kabiliyeti" olarak tanımlamıştır
+- Amerikan Federal Ticaret Komisyonu nesnelerin internetini "günlük kullanımımızda olan nesnelerin internete bağlanıp veri gönderip alması kabiliyeti" olarak tanımlamıştır
 
 ## NESNELERİN İNTERNETİNDE KONTROL EDİLECEK FAKTÖRLER
 
@@ -582,14 +583,14 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 
 # HADOOP
 
-- Hadoop, sıradan sunuculardan oluşan küme (cluster ) üzerinde büyük verileri işlemek amaçlı uygulamaları çalıştıran ve HDFS olarak adlandırılan bir dağıtık dosya sistemi ile Hadoop MapReduce özelliklerini bir getiren, Java ile geliştirilmiş açık kaynaklı bir kütüphanedir
+- Hadoop, sıradan sunuculardan oluşan küme (cluster ) üzerinde büyük verileri işlemek amaçlı uygulamaları çalıştıran ve HDFS olarak adlandırılan bir dağıtık dosya sistemi ile Hadoop MapReduce özelliklerini bir getiren, Java ile geliştirilmiş açık kaynaklı bir kütüphanedir
 
 ## HDFS
 
-- Hadoop içerisinde büyük verileri sakladığımız bileşene HDFS (Hadoop Distributed File System)denir.
-- Büyük verileri HDFS sistemine yüklediğimiz zaman  , Hadoop bu verileri bloklara ayırır .
+- Hadoop içerisinde büyük verileri sakladığımız bileşene HDFS (Hadoop Distributed File System)denir.
+- Büyük verileri HDFS sistemine yüklediğimiz zaman  , Hadoop bu verileri bloklara ayırır .
 - Farklı bloklara ayrılan veriler Hadoop Cluster üzerinde farklı node lara dağılır
-- Burada dikkat etmemiz gereken en önemli hususlardan bir tanesi her bir blok çoklanarak kaydedilmiştir
+- Burada dikkat etmemiz gereken en önemli hususlardan bir tanesi her bir blok çoklanarak kaydedilmiştir
 
 <center><image src="./image/hdfs.png" width="500" height="200"/></center>
 
@@ -597,10 +598,10 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
   - **NameNode**:
     - Ana süreç olarak blokların sunucular üzerindeki dağılımından, oluşturulmasından, silinmesinden, bir blokta sorun meydana geldiğinde yeniden oluşturulmasından ve her türlü dosya erişiminden sorumludur.
     - Kısacası HDFS üzerindeki tüm dosyalar hakkındaki bilgiler NameNode tarafından saklanır ve yönetilir.
-    - Her kümede yalnızca bir adet NameNode olabilir.
+    - **Her kümede yalnızca bir adet NameNode olabilir.**
   - **DataNode**:
-    - DataNode ise işlevi blokları saklamak olan işçi süreçtir
-    - Her DataNode kendi yerel diskindeki veriden sorumludur. Ayrıca diğer DataNode’lardaki verilerin yedeklerini de barındırır. DataNode’lar küme içerisinde birden fazla olabilir
+    - DataNode ise işlevi blokları saklamak olan işçi süreçtir
+    - Her DataNode **kendi yerel diskindeki veriden** sorumludur. Ayrıca diğer DataNode’lardaki verilerin yedeklerini de barındırır. DataNode’lar küme içerisinde birden fazla olabilir
 
 # MAPREDUCE
 
@@ -612,7 +613,7 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 <center><image src="./image/mapreduce.png"/></center>
 
 - Map aşamasında, Hadoop sabit boyutlu parçalar halinde bir MapReduce taskı için veriyi küçük parçalara böler.
-- Bu bölünmüş veriler splits/input splits olarak adlandırılır.
+- Bu bölünmüş veriler splits/input splits olarak adlandırılır.
 - Hadoop her split için bir map task oluşturur ve kullanıcı tanımlı map fonksiyonunu çalıştırır. Bu sayede bütün girdiyi işlemeye kıyasla, bölünmüş parçaları işlemek daha az zaman alır.
 - Bu mimaride büyük miktardaki veri, kümede yer alan düğümler tarafından hızlı bir şekilde okunabilir ve aynı zamanda, kümede ne kadar çok düğüm varsa veri işleme hızı da o nispette artar.
 - Map taskları çıktıyı HDFS’e değil local diske yazarlar çünkü map tasklarının oluşturduğu çıktı nihai değil ara çıktıdır.
@@ -640,19 +641,19 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 
 ## Avantajları
 
-- **Çok büyük miktarda veriyi hızlıca saklama ve işleme yeteneği**. Veri hacmi ve çeşitliliği, özellikle sosyal medyadan ve Nesnelerin İnterneti'nden (IoT) sürekli olarak artmaktadır.
-- **İşlem gücü**. Hadoop'un dağıtılmış bilgi işlem modeli, büyük verileri hızlı bir şekilde işler. Ne kadar çok hesaplama düğümü kullanırsanız, o kadar çok işlem gücünüz olur.
-- **Hata toleransı**. Veri ve uygulama işleme donanım arızasına karşı korunur. Bir düğüm kapanırsa, dağıtılmış bilgisayarın başarısız olmadığından emin olmak için işler otomatik olarak diğer düğümlere yönlendirilir. Tüm verilerin birden fazla kopyası otomatik olarak saklanır.
-- **Esneklik**. Geleneksel ilişkisel veritabanlarının aksine, saklamadan önce verileri önceden işlemek zorunda değilsiniz. İstediğiniz kadar veri depolayabilir ve daha sonra nasıl kullanacağınıza karar verebilirsiniz. Bu, metin, resim ve videolar gibi yapılandırılmamış verileri içerir.
-- **Düşük maliyetli**. Açık kaynaklı çerçeve ücretsizdir ve büyük miktarda veriyi saklamak için emtia donanımını kullanır.
-- **Ölçeklenebilirlik**. Yalnızca düğüm ekleyerek daha fazla veri işlemek için sisteminizi kolayca büyütebilirsiniz.
+- **Çok büyük miktarda veriyi hızlıca saklama ve işleme yeteneği**. Veri hacmi ve çeşitliliği, özellikle sosyal medyadan ve Nesnelerin İnterneti'nden (IoT) sürekli olarak artmaktadır.
+- **İşlem gücü**. Hadoop'un dağıtılmış bilgi işlem modeli, büyük verileri hızlı bir şekilde işler. Ne kadar çok hesaplama düğümü kullanırsanız, o kadar çok işlem gücünüz olur.
+- **Hata toleransı**. Veri ve uygulama işleme donanım arızasına karşı korunur. Bir düğüm kapanırsa, dağıtılmış bilgisayarın başarısız olmadığından emin olmak için işler otomatik olarak diğer düğümlere yönlendirilir. Tüm verilerin birden fazla kopyası otomatik olarak saklanır.
+- **Esneklik**. Geleneksel ilişkisel veritabanlarının aksine, saklamadan önce verileri önceden işlemek zorunda değilsiniz. İstediğiniz kadar veri depolayabilir ve daha sonra nasıl kullanacağınıza karar verebilirsiniz. Bu, metin, resim ve videolar gibi yapılandırılmamış verileri içerir.
+- **Düşük maliyetli**. Açık kaynaklı çerçeve ücretsizdir ve büyük miktarda veriyi saklamak için emtia donanımını kullanır.
+- **Ölçeklenebilirlik**. Yalnızca düğüm ekleyerek daha fazla veri işlemek için sisteminizi kolayca büyütebilirsiniz.
 - **MapReduce programlama, tüm problemler için uygun değildir**
-- **Tam teşekküllü veri yönetimi ve yönetişimi**. Hadoop'un veri yönetimi , veri temizleme, yönetişim ve meta veriler için kullanımı kolay, tam özellikli araçları yoktur.Özellikle veri eksikliği, veri kalitesi ve standardizasyon araçlarıdır.
-- **Veri güvenliği**. Yeni araçlar ve teknolojiler ortaya çıksa da, bir başka zorluk da parçalanmış veri güvenliği sorunları etrafında yoğunlaşıyor.
+- **Tam teşekküllü veri yönetimi ve yönetişimi**. Hadoop'un veri yönetimi , veri temizleme, yönetişim ve meta veriler için kullanımı kolay, tam özellikli araçları yoktur.Özellikle veri eksikliği, veri kalitesi ve standardizasyon araçlarıdır.
+- **Veri güvenliği**. Yeni araçlar ve teknolojiler ortaya çıksa da, bir başka zorluk da parçalanmış veri güvenliği sorunları etrafında yoğunlaşıyor.
 
 # AMAZON WEB SERVİCES
 
-- Amazon Web Servisleri (AWS), 2006 yılında kurulmuş olup,şirketlerin işlerini ölçeklendirmesi , büyütmesine yardımcı olan ; işlem gücü , veritabanı depolaması , içerik ulaştırma ve diğer fonksiyonel servisler sunan, 1 milyondan fazla müşterisi olan ve  Microsoft Azure ve Google Cloud Platform gibi IaaS, SaaS, PaaS and FaaS pazarında büyük rolü bir servis sağlayıcısıdır. Amazon, aralarında Shazam,Sportify ,Airbnb,Yelp,Ubisoft ,WIX’in yer aldığı ünlü teknolojilere hayat vermektedir.
+- Amazon Web Servisleri (AWS), 2006 yılında kurulmuş olup,şirketlerin işlerini ölçeklendirmesi , büyütmesine yardımcı olan ; işlem gücü , veritabanı depolaması , içerik ulaştırma ve diğer fonksiyonel servisler sunan, 1 milyondan fazla müşterisi olan ve  Microsoft Azure ve Google Cloud Platform gibi IaaS, SaaS, PaaS and FaaS pazarında büyük rolü bir servis sağlayıcısıdır. Amazon, aralarında Shazam,Sportify ,Airbnb,Yelp,Ubisoft ,WIX’in yer aldığı ünlü teknolojilere hayat vermektedir.
 
 - En fazla işlevsellik
 - Müşteri ve çözüm ortaklarından oluşan en büyük topluluk
@@ -712,15 +713,15 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 
 # Storage (Depolama) Servisleri
 
-- **Cloud SQL**, MySQL tabanlı bulutta çalışan SQL veritabanı depolama servisidir.
-- **Cloud Datastore** veya **Cloud Bigtable**, SQL tabanlı olmayan (NoSQL) veritabanı depolama servisidir.
-- **Cloud Storage tutarlı (consistent)**, ölçeklenebilir (scalable), büyük boyutlu dosya depolama için kullanılabilir. Bu depolamada da  üç seçenek bulunmaktadır.
-- **GCE için kalıcı diskler (Persistent disks on Compute Engine)**  birincil öncelikli veri depolama alanı sunmaktadır. Eski tip mekanik Hard-Disk Tabanlı  ve Solid-State Persistent Disks (SSD) çeşitleri mevcuttur.
+- **Cloud SQL**, MySQL tabanlı bulutta çalışan SQL veritabanı depolama servisidir.
+- **Cloud Datastore** veya **Cloud Bigtable**, SQL tabanlı olmayan (NoSQL) veritabanı depolama servisidir.
+- **Cloud Storage tutarlı (consistent)**, ölçeklenebilir (scalable), büyük boyutlu dosya depolama için kullanılabilir. Bu depolamada da  üç seçenek bulunmaktadır.
+- **GCE için kalıcı diskler (Persistent disks on Compute Engine)**  birincil öncelikli veri depolama alanı sunmaktadır. Eski tip mekanik Hard-Disk Tabanlı  ve Solid-State Persistent Disks (SSD) çeşitleri mevcuttur.
 
 # Networking (Ağ ve İletişim) Servisleri
 
 - **App Engine**; network altyapısını bizim yerimize yönetirken
-- **Container Engine**; bu iş için Kubernetes modelini kullanırken
+- **Container Engine**; bu iş için Kubernetes modelini kullanırken
 - **Compute Engine**; kullanmamız için bir dizi networking servisini bizlere sunmaktadır.
 - Google Virtual Private Cloud (VPC)
 - Google Cloud Load Balancing
@@ -733,19 +734,19 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 - Big Data servisleri elinizdeki mevcut büyük veriyi Google’ın bulut platformunda işleyerek ve sorgulayarak karmaşık sorularınıza hızlı cevaplar almanızı sağlar.
 - **Google BigQuery**: Veri Analizi hizmeti sunmaktadır
 - **Google Cloud Dataflow**: Yığın ve akışkan verileri işlemek için yönetilebilen servis ve SDK (Software Development Kit)’ler sağlar
-- **Google Cloud Pub/Sub**: Eş zamanlı olmayan (asynchronous) bir mesajlaşma servisidir.
+- **Google Cloud Pub/Sub**: Eş zamanlı olmayan (asynchronous) bir mesajlaşma servisidir.
 
 # Salesforce Crm
 
-- Salesforce Müşteri Platformu, satış gücü otomasyonu, müşteri hizmet ve destek uygulamalarını, pazarlama otomasyonunu, iş ortakları yönetimini, iş zekası, uygulama geliştirme, Internet of Things (IoT ), entegrasyon ve bulut servislerini kapsamaktadır.
+- Salesforce Müşteri Platformu, satış gücü otomasyonu, müşteri hizmet ve destek uygulamalarını, pazarlama otomasyonunu, iş ortakları yönetimini, iş zekası, uygulama geliştirme, Internet of Things (IoT ), entegrasyon ve bulut servislerini kapsamaktadır.
 - Salesforce CRM tek bir ürün değil; şirketlerin büyümesine ve başarısına yardımcı olmak için müşteri, iş ortağı ve çalışanların arasında etkileşimleri yöneten kusursuz bir entegre çözümdür.
 
 # Geçmişte Salesforce
 
-- SaaS (software-as-a-service) olarak çalışacak bir yazılım geliştirmeye başladılar.
+- SaaS (software-as-a-service) olarak çalışacak bir yazılım geliştirmeye başladılar.
 - İlk çözüm bir CRM paketiydi
 - Ürün bulut tabanlı olunca, şirketlerin barındırma & bakım gibi giderleri olmayacaktı.
-- Ürünün ismi Sales Cloud oldu. Bulut üzerinde çalışan bir “Müşteri Yönetim Sistemi” olarak kullanılabilecek bir üründü Sales Cloud.
+- Ürünün ismi Sales Cloud oldu. Bulut üzerinde çalışan bir “Müşteri Yönetim Sistemi” olarak kullanılabilecek bir üründü Sales Cloud.
 
 # Salesforce’a Ait Ürünler
 
@@ -860,14 +861,14 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 
 - Bu bilgiler ışığında yoğun okuma yazma gibi veritabanı işlemleri yapan organizasyonlar, performans ve esneklik gibi çeşitli ölçütler nedeniyle ilişkisel veritabanı yönetim sistemleri yerine farklı veritabanı tasarımları üzerinde durmaktadırlar.
 
-- “ACID”(Atomicity, Consistency, Isolation, Durability)kuralları bulunur. NoSQL sistemleri bu kuralların tamamına uymaz.
+- **“ACID”(Atomicity, Consistency, Isolation, Durability)kuralları bulunur. NoSQL sistemleri bu kuralların tamamına uymaz.**
 
 ## YATAY ÖLÇEKLEME ve DİKEY ÖLÇEKLEME
 
-- **Yatay Ölçekleme**: Veritabanının Yatayda ölçeklenebilir olması (horizontally scalable, scale out) ucuz ve çok sayıda makinenin aynı anda kullanılması anlamına gelir. Yatay ölçeklenebilirlik sayesinde yedeklilik de performans artışı da sağlanabilir.
+- **Yatay Ölçekleme**: Veritabanının Yatayda ölçeklenebilir olması (horizontally scalable, scale out) **ucuz ve çok sayıda makinenin** aynı anda kullanılması anlamına gelir. Yatay ölçeklenebilirlik sayesinde yedeklilik de performans artışı da sağlanabilir.
   - Cassandra
   - MongoDB
-- **Dikey Ölçekleme**: Veritabanının Dikeyde ölçeklenebilir olması (dikey ölçeklenebilirlik, vertically scalable, scale up) bir tane çok güçlü aynı zamanda pahalı bir makine/donanım kullanılmasıdır. Dikey Ölçeklenebilir sistemlerde donanım kısıtları mevcuttur
+- **Dikey Ölçekleme**: Veritabanının Dikeyde ölçeklenebilir olması (dikey ölçeklenebilirlik, vertically scalable, scale up) bir tane çok güçlü aynı zamanda pahalı bir makine/donanım kullanılmasıdır. Dikey Ölçeklenebilir sistemlerde donanım kısıtları mevcuttur
   - MySQL-Amazon
   - RDS(Amazon Relational Database Service)
 
@@ -1005,11 +1006,11 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 
 # CAP TEOREMİ
 
-- **Consistency(Tutarlılık)**: Brewer’a göre dağıtık bir veritabanı tutarlı olmalıdır.
+- **Consistency(Tutarlılık)**: Brewer’a göre dağıtık bir veritabanı tutarlı olmalıdır.
   Bunun anlamı; herhangi bir veriye erişilmek istendiğinde mazeret kabul etmeksizin, her koşulda dağıtık parçalar üzerinden en son ve güncel verilere erişilmesi zorunludur.
-- **Availability(KULLANILABİLİRLİK)**: Yine Brewer der ki; bir veritabanı her zaman veri kaydetmeye hazır olmak zorundadır.
+- **Availability(KULLANILABİLİRLİK)**: Yine Brewer der ki; bir veritabanı her zaman veri kaydetmeye hazır olmak zorundadır.
   Dağıtık sistemler üzerinde çalışan bir veritabanı düşündüğünüzde sunuculardan biri ya da birkaçı arızalı bile olsa yine de erişilebilir ve kayıt ekleyip sorgulanabilir olması gerekir.
-- **Partition Tolerance (Parçalanma Toleransı)**: Bir veritabanını hizmete sunan dağıtık sistemlerin birbiriyle iletişiminde sorun dahi yaşansa yine de veritabanı kayıt edilebilir olmalıdır.
+- **Partition Tolerance (Parçalanma Toleransı)**: Bir veritabanını hizmete sunan dağıtık sistemlerin birbiriyle iletişiminde sorun dahi yaşansa yine de veritabanı kayıt edilebilir olmalıdır.
 - Malesef bir veritabanı sistemi bu 3 özelliğin tamamına sahip olamaz! İşte bu nedenle her bir veritabanı sistemi bir tercih yapmak zorunda, bu 3 temel özellikten birini göz ardı edeceksiniz. Peki hangisi ?
 - Bize gereken şey her koşulda **erişilebilir olmak** ve yine **her koşul altında tutarlı** verilere sahip olmak ise **İlişkisel Veritabanı Yönetim Sistemleri** tercihimiz olmalı.
 - Dağıtık veritabanı sistemimizin **verileri tutarlı yani her daim güncel olsun**, aynı zamanda da **dağıtık parçaların** birbirinden haberdar olmadığı durumda bile çalışsın istiyorsak **MongoDb** gibi **NoSQL** veritabanlarını kullanmamız gerekir.
@@ -1045,14 +1046,14 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 
 # OLTP ve OLAP Nedir?
 
-- OLTP ve OLAP kavramları İlişkisel Veri Tabanı Sistemlerinde ve Veri Ambarı konularında sıkça rastladığımız kavramlardır.
-- OLTP (On Line Transactional Processing) tipi sistemler organizasyonlarda kullanılan veri girişi, veri güncelleme, veri silme gibi işlemlere olanak tanıyan sistemlerdir.
-- Günlük hayatta kullandığımız çoğu veri tabanı ve veri tabanına bağlı programlar OLTP tarzı işlem gören veri tabanlarıdır.
+- OLTP ve OLAP kavramları İlişkisel Veri Tabanı Sistemlerinde ve Veri Ambarı konularında sıkça rastladığımız kavramlardır.
+- OLTP (On Line Transactional Processing) tipi sistemler organizasyonlarda kullanılan veri girişi, veri güncelleme, veri silme gibi işlemlere olanak tanıyan sistemlerdir.
+- Günlük hayatta kullandığımız çoğu veri tabanı ve veri tabanına bağlı programlar OLTP tarzı işlem gören veri tabanlarıdır.
 - İlişkisel veri tabanlarında kullanılmaktadır ve karmaşık ilişkiler bulunan büyük veriler için uygun değildir.
-- Büyük ve karmaşık veri tiplerinde en uygun sorgulama yöntemi için OLAP tipi sistemler kullanılmalıdır.
+- **Büyük ve karmaşık veri tiplerinde en uygun sorgulama yöntemi için OLAP tipi sistemler kullanılmalıdır.**
 - OLTP sistemlerde tablolar arasında ilişkiler oluşturulur, burada normalizasyon seviyesine dikkat edilmeli ve ayrıca ACID Prensiplerine göre işlem görülmelidir.
-- Günümüzde işletmelerde yaygın olarak kullanılan ERP sistemleri (örn. SAP programı) kullanıcıları OLTP üzerinden işlem yapmaktadır.
-- OLTP türü sistemler, her gün çok sayıda işleme, girdi-çıktıya ve güncellemeye uygun sistemlerdir.
+- Günümüzde işletmelerde yaygın olarak kullanılan ERP sistemleri (örn. SAP programı) kullanıcıları OLTP üzerinden işlem yapmaktadır.
+- **OLTP türü sistemler, her gün çok sayıda işleme, girdi-çıktıya ve güncellemeye uygun sistemlerdir.**
 - Fakat canlı sistemlerde karmaşık sorgulama işlemleri sistemde bir takım sorunlara ve yavaşlamalara yol açabilir.
 - ERP, Kurumsal Kaynak Planlama anlamına gelen “Enterprise Resource Planning” kelimelerinden oluşmaktadır. ERP bir organizasyonun tüm veri ve proseslerinin tek bir noktada entegre edildiği bilgi sistemleridir.
 
@@ -1090,7 +1091,7 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 - MongoDB ye dönecek olursak MongoDB de veriler belirli ID’ler tanımlanarak tutulmaktadır ve bu sayede sorgulamalarda yüksek performans göstermektedir.
 - Diğer NoSql sistemlere oranla daha zengin bir sorgulama diline sahiptir.
 - MongoDB’de veriler Document’lar halinde Collection’lar içerisinde bulunur.
-- Veriyapısı açısından İVTYS’lerle karşılaştırıldığında collection tabloya, bir Document ise tablodaki bir satıra denk gelir diyebiliriz.
+- Veriyapısı açısından İVTYS’lerle karşılaştırıldığında **collection tabloya, bir Document ise tablodaki bir satıra denk gelir** diyebiliriz.
 - Veriler yatay ölçeklendirme ile yedeklenebildiği için kullanılabilirlik oranı oldukça yüksektir.
 - MongoDB ölçeklenebilirliği sağlamak için **Master-Slave Replication** desteği sunuyor.
 - Bu modelde yazma işlemleri master sunucuya yapılırken okuma işlemleri slave sunuculardan yapılarak ölçeklendirme sağlanıyor.
@@ -1099,32 +1100,32 @@ Klasik BT altyapısından farklı olarak Bulut Bilişim aşağıdaki şekilde bi
 - MongoDB’nin en güzel özelliklerinden birisi de **Sharding**.
 - Bu özellik sayesinde büyük miktardaki veri, sunucular arasında paylaştırılıp yükün dağıtılması sağlanabiliyor
 - Replication özelliği ile birlikte kullanıldığında MongoDB NoSQL’in gücünü ortaya koyuyor.
-- **Sorgu(query) Desteği**: Pekçok NoSQL çözümü veriye sadece anahtarlar(key) üzerinden erişme olanağı sağlarken, MongoDB istenilen alanlar ve belirli aralıklara(range query) göre, ayrıca düzenli ifadelerle(regular expression) de sorgulama imkanı sunuyor.
+- **Sorgu(query) Desteği**: Pekçok NoSQL çözümü veriye sadece anahtarlar(key) üzerinden erişme olanağı sağlarken, MongoDB istenilen alanlar ve belirli aralıklara(range query) göre, ayrıca düzenli ifadelerle(regular expression) de sorgulama imkanı sunuyor.
 - **İkincil(secondary) index Desteği**: İstenilen alanlara göre sorgulama yanı sıra, bu alanları secondary index olarak tanımlayabilmek. Bu SQL de kullanılan non-clustered index olarak da düşünülebilir.
 
 # MongoDB Altyapısı
 
 - **Aggregation**
   - Dağınık halde bulunan verileri toplayıp gruplandırmak ve bunlar üzerinden gerekli işlemleri yapmak.
-- **Map-Reduce Desteği**
+- **Map-Reduce Desteği**
   - Böl gönder, topla gönder
   - Burada kullanıcının sisteme yüklediği veriler mapperlar ile parçalara bölünür ve gerekli alanlara dağıtılır
   - Bu sayede işlemler daha hızlı yapılır ve sistemin her alanına aktarılan yük daha da azaltılmış olur
   - Sistem tarafından gerekli işlemler yapıldıktan sonra bu veriler Reducer’lar ile tekrar bir araya getirilir ve kullanıcıya aktarılır.
-- **Data Models**
+- **Data Models**
   - MongoDB’nin veri tutma biçimi SQLden farklı bir halde bulunmaktadır.
   - Bir dizi içerisinde string ve integer ifade bulunabilir. Bu özellikte İVTYS’lerden fark olarak düşünebileceğimiz bir özellik.
 - **Replication**
   - MongoDB’nin herhangi bir server hatası durumunda kendini güvenceye alması.
   - VTYS sistemlerdeki Disaster Recovery’ler benzeri olarak da düşünülebilir.
-  - Ana sunucunun her hangi bir sorunla karşılaşması tehlikesine karşın yedek sunucular ile verilerin yedeklenmesi ve ana sunucuda sorun gerçekleştiğinde yedek sunucunun ana sunucu görevini üstlenip veri kayıplarını engellemesi için gerekli bir özelliktir.
-- **Master-Slave Replication Desteği**
+  - Ana sunucunun her hangi bir sorunla karşılaşması tehlikesine karşın yedek sunucular ile verilerin yedeklenmesi ve ana sunucuda sorun gerçekleştiğinde yedek sunucunun ana sunucu görevini üstlenip veri kayıplarını engellemesi için gerekli bir özelliktir.
+- **Master-Slave Replication Desteği**
   - Yazma ve okuma işlemlerini ayrı sunuculara yönlendirebilme.
   - Replication özelliğinin bir alt özelliği olarak da düşünülebilir.
   - Yine aynı şekilde ana sunucu ve yedek sunucular oluşturulabilir.
   - Burada ek olarak yazma ve okuma işlemleri ayrı sunuculardan yapılabilir.
   - Sunucular üzerindeki trafik ve yük azaltılacağından performans açısından önemli bir artış daha sağlanabilir.
-- **Sharding Desteği**
+- **Sharding Desteği**
   - Büyük ölçekli verilerin sunucular arasında paylaştırılması özelliği.
   - Bazen veriler çok büyük boyutlara ulaştığında tek bir sunucu artık bizim için yetersiz bir hal alabilir
   - Yeni sunucular ile yatay büyümeye giderek veriler bu sunuculara dağıtılır ve yük azaltılmış olur.
@@ -1202,13 +1203,13 @@ db.person.remove({"sicil":"1234"})
 
 # COUCHDB
 
-- Couchdb NoSQL tabanlı, verileri JSON formatında tutan , MapReduce indeksleri için JavaScript ve kendi API’si için HTTP kullanan, Erlang ile yazılmış open source bir veritabanı sistemidir.
+- Couchdb NoSQL tabanlı, verileri JSON formatında tutan , MapReduce indeksleri için JavaScript ve kendi API’si için HTTP kullanan, Erlang ile yazılmış open source bir veritabanı sistemidir.
 - Bir ilişkisel veritabanı aksine CouchDB veri ve tablolar arasındaki, ilişkileri saklamaz. Bunun yerine her veritabanı bağımsız belgeler topluluğu oluşturur.
 - Her doküman kendi veri ve kendi şemasını tutar ve böylece bir uygulama çoklu verilere ulaşabilir.
-- Örneğin başka bir sunucudaki bir kişinin cep telefonunda saklanan verilere ulaşmak gibi.
+- Örneğin başka bir sunucudaki bir kişinin cep telefonunda saklanan verilere ulaşmak gibi.
 - CouchDB kullanımı kolay olan ve tamamen Web i kucaklayan açık bir kaynaktır.
 - CouchBase server, kalıcı veriyi hafıza gücüyle birleştirmiş son derece hızlı veri getirebilen update edebilen bir databasedir.
-- En temel özelliği hızdır.
+- **En temel özelliği hızdır.**
 - Yazma/okuma işlemlerinde key/value API’sini kullanır.
 - Kurulumu kolay ve elastik bir yapısı vardır.
 
