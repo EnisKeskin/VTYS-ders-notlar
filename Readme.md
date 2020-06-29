@@ -1575,7 +1575,7 @@ Cassandra > MySQL read and write
 | Tablolar            | Graflar                |
 | ------------------- | ---------------------- |
 | Satırlar            | Düğümler               |
-| KOlonlar ve Veriler | Özellikler ve Değerler |
+| Kolonlar ve Veriler | Özellikler ve Değerler |
 | Kısıtlayıcılar      | ilişkiler              |
 | Joinler             | Traversallar           |
 
